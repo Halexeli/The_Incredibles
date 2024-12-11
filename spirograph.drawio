@@ -140,7 +140,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="_BAvB3OfVpKcY2HnQEDT-12" value="Spirographe_regulier" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="10" y="285" width="160" height="185" as="geometry">
+          <mxGeometry x="10" y="285" width="160" height="115" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -189,7 +189,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="_BAvB3OfVpKcY2HnQEDT-25" value="Spirographe_irregulier" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="180" y="285" width="160" height="185" as="geometry">
+          <mxGeometry x="180" y="285" width="160" height="115" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
