@@ -25,7 +25,7 @@ Cercle::Cercle(const Point& p,const double _a):Ellipse_virtuelle(p,_a){
 }
 
 
-void Cercle::afficher(sf::CircleShape shape){
+void Cercle::afficher(sf::CircleShape  &shape){
     shape.setRadius(this->a);
     shape.setPosition(10,20);
 }
