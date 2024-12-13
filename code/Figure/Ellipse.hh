@@ -1,6 +1,7 @@
 #pragma once
 #include "Figure.hh"
 #include <iostream>
+#include "SFML/Graphics.hpp"
 
 class Ellipse_virtuelle:Figure{
     //x²+y²=a
@@ -33,7 +34,8 @@ class Cercle:Ellipse_virtuelle{
         Cercle(const Cercle& p);
         Cercle(const Point& p,const double a);
         ~Cercle();
-        void afficher();
+        void afficher(sf::CircleShape shape);
+        void afficher(){};
 
 };
 

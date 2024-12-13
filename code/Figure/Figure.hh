@@ -6,9 +6,9 @@ class Figure{
     protected :
         Point centre;
     public:
-        Figure();
-        Figure(const Point& p);
-        Figure(const Figure& p);
+        Figure():centre(Point()){};
+        Figure(const Point& p):centre(Point(p)){};
+        Figure(const Figure& p):centre(p.centre){};
         ~Figure();
         virtual void afficher()=0;
 };

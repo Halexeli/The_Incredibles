@@ -1,6 +1,5 @@
 #include "Ellipse.hh"
 
-
 Ellipse_virtuelle::Ellipse_virtuelle():Figure(){
     a=0;
 }
@@ -26,9 +25,7 @@ Cercle::Cercle(const Point& p,const double _a):Ellipse_virtuelle(p,_a){
 }
 
 
-void afficher(){
-
-    sf::CircleShape shape(a);
+void Cercle::afficher(sf::CircleShape shape){
+    shape.setRadius(this->a);
     shape.setPosition(10,20);
-    window.draw(circle);
 }

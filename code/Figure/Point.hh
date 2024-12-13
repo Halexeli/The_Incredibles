@@ -9,8 +9,8 @@ class Point
         int x;
         int y;
     public:
-        Point();
-        Point(int x, int y);
+        Point():x(0),y(0){};
+        Point(int x, int y):x(x),y(y){};
         Point(const Point& p);
         ~Point();
 

@@ -7,7 +7,7 @@ TST= $(wildcard *.cc)
 OBJ_TEST = $(filter-out ../main.o, $(OBJ)) $(TST:.cc=.o) 
 
 main.out : $(OBJ_TEST) 
-	$(CC) $(CCFLAGS)  -o $@ $^ 
+	$(CC) $(CCFLAGS)  -o $@ $^ $(SFML)
 
 main: main.out
 	./main.out
