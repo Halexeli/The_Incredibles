@@ -11,3 +11,5 @@ Idee de base :
 
 Autre idées:
 -Choisir les paramètres selon des touches spécifiques sur le clavier et les modifier avec les mouvements de la souris
+
+https://github.com/Beatzoid/sfml-macos/blob/master/Makefile
