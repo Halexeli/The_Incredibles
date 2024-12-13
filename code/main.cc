@@ -1,10 +1,9 @@
 #include "Figure/Ellipse.hh"
 
 int main(){
-    Cercle c(Point(10,10),100);
-        sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    Cercle c(Point(100,100),50);
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape;
 
     while (window.isOpen())
     {
