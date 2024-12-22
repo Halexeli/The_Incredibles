@@ -26,6 +26,11 @@ Cercle::Cercle(const Point& p,const double _a):Ellipse_virtuelle(p,_a){
 
 
 void Cercle::afficher(sf::CircleShape  &shape){
+    shape.setFillColor(sf::Color(0, 0, 0));
+
+// définit un contour orange de 10 pixels d'épaisseur
+    shape.setOutlineThickness(1);
+    shape.setOutlineColor(sf::Color(255, 255, 255));
     shape.setRadius(this->a);
     shape.setPosition(10,20);
 }
