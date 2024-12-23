@@ -7,7 +7,7 @@
 /* Positions origin are upper left corner */
 
 Screen::Screen(uint16_t h,uint16_t w):_w(w),_h(h){
-   _win = new sf::RenderWindow(sf::VideoMode(_w , _h+50), "ASTRO GAME");
+   _win = new sf::RenderWindow(sf::VideoMode(_w , _h+50),"Incredible Spirograph", sf::Style::Default);
 }
 
 
@@ -84,7 +84,7 @@ void Screen::star(float x, float y, float size, uint32_t color)
   _win->draw(convex);
 }
 
-void Screen::text(float x ,float y,std::string str_txt,uint32_t color, std::string font_file)
+void Screen::text(float x ,float y,std::string str_txt,int size, uint32_t color, std::string font_file)
 {
   sf::Font font;
   if (!font.loadFromFile(font_file))
@@ -94,9 +94,47 @@ void Screen::text(float x ,float y,std::string str_txt,uint32_t color, std::stri
   sf::Text text;
 
   text.setFont(font);
-
+text.setCharacterSize(size);
   text.setString(str_txt);
   text.setColor(sf::Color(color));
   text.setPosition(x,y);
   _win->draw(text);
+}
+
+void Screen::Figure_regular(float x, float y,int sommet,float angle, float size, uint32_t color){
+  // crée une forme vide
+  sf::ConvexShape convex;
+  // définit le nombre de points (sommet)
+  convex.setPointCount(sommet);
+  // définit les points
+  for(int i=0; i<sommet;i++)
+    convex.setPoint(i, sf::Vector2f(cos(angle+(360*i/sommet))*size, cos(angle+(360*i/sommet))*size));
+  convex.setFillColor(sf::Color(color));
+  convex.setPosition(x, y);
+  _win->draw(convex);
+}
+
+void Screen::Figure_irregular(float x, float y,int sommet,std::vector <float,float> point, uint32_t color){
+  // crée une forme vide
+  sf::ConvexShape convex_irr;
+  // définit le nombre de points (sommet)
+  convex_irr.setPointCount(sommet);
+  // définit les points
+  int i=0;
+  for(auto it:point){
+    convex_irr.setPoint(i, sf::Vector2f(it->first,it->second));
+    i++;
+  }
+  convex_irr.setFillColor(sf::Color(color));
+  convex_irr.setPosition(x, y);
+  _win->draw(convex_irr);
+}
+
+bool Screen::Buttonclicked(float x, float y, float w, float h){
+  // get the local mouse position (relative to a window)
+  sf::Vector2i localPosition = sf::Mouse::getPosition(*_win); // window is a sf::Window
+  if((x<localPosition.x)||(x+w>localPosition.x)||(y<localPosition.y)||(y+h>localPosition.y))
+    return(1);
+  else
+    return(0);
 }

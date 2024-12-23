@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
  /**
      Constructor of Screen  open a SFML window
@@ -66,15 +67,28 @@ class Screen{
     @param size  (in pixels)
     @param color 0xRRGGBBAA (default: orange)
   */
-  void Figure_regular(float x, float y,int sommet, float angle, float size);
-
-  void Figure_irregular(float x, float y,int sommet, float angle, float size);
-
-  void text(float x ,float y,std::string text,uint32_t color = 0x35EEEEFF,std::string font_file = "../Assets/text.txt");
+  void Figure_regular(float x, float y,int sommet,float angle, float size, uint32_t color= 0xAEFBFFFF);
+   /**   draw a regular figure convex
+    @param x x-coordinate of the center (in pixels)
+    @param y y-coordinate of the center (in pixels)
+    @param sommet nombre de sommets
+    @param angle l'angle que la figure fait avec l'axe x (et le premier segment qui va du centre de la figure au premier point)
+    @param size taille des segments du centre de la figure 
+    @param color 0xRRGGBBAA (default: light blue)
+  */
+  void Figure_irregular(float x, float y,int sommet, std::vector <float,float> point,uint32_t color= 0xAEFBFFFF);
+   /**   draw a irregular figure convex
+    @param x x-coordinate of the center (in pixels)
+    @param y y-coordinate of the center (in pixels)
+    @param sommet nombre de sommets
+    @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
+    @param color 0xRRGGBBAA (default: light blue)
+  */
+  void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../../Assets/Times_New_Roman/times_new_roman.ttf");
 
   uint16_t w() const {return _w;}
   uint16_t h() const {return _h;}
-
+  bool Buttonclicked(float x, float y, float w, float h);
  protected:
 
 
