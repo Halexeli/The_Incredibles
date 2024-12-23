@@ -9,6 +9,7 @@ int main()
     Page page1;
     page1+=new Bouton(100,100,50,20,0);
     page1+=new Texte(200, 100, 12, 0xFF0000FF, "test");
+    page1+=new Polyedre_regulier();
     // run the program as long as the window is open
     while (screen.isOpen())
     {
