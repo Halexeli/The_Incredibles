@@ -25,7 +25,7 @@ class Ellipse:Ellipse_virtuelle{
         Ellipse(const Ellipse& p);
         Ellipse(const Point& p, const double a);
         ~Ellipse(){};
-        virtual void afficher()=0;
+        void afficher();
 };
 
 class Cercle:Ellipse_virtuelle{
@@ -34,8 +34,7 @@ class Cercle:Ellipse_virtuelle{
         Cercle(const Cercle& p);
         Cercle(const Point& p,const double a);
         ~Cercle(){};
-        void afficher(sf::CircleShape &shape);
-        void afficher(){};
+        void afficher();
 
 };
 

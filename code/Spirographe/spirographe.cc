@@ -17,7 +17,7 @@ Spirographe::~Spirographe()
 {
 }
 //affichage
-void Spirographe::afficher()
+void Spirographe::draw()
 {
     std::cout<<"méthode a implementer"<<std::endl;
 }
