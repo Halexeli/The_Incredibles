@@ -20,9 +20,9 @@ class Page{
     Page():id(it){it++;};
     Page(const Page &p):id(id),Formes(p.Formes),Spiro(p.Spiro),Fond(p.Fond),List_Bouton(p.List_Bouton),List_string(p.List_string){};
     ~Page(){};
+    void creer_fond(std::vector <Polyedre_regulier*> Fond);
     void operator+=(Figure * adding){Formes.push_back(adding);};
     void operator+=( Spirographe* adding){Spiro.push_back(adding);};
-    void operator+=( Polyedre_regulier * adding){Fond.push_back(adding);};
     void operator+=( Bouton * adding){List_Bouton.push_back(adding);};
     void operator+=( Texte * adding){List_string.push_back(adding);};
     void draw(Screen &screen);
