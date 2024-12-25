@@ -1,5 +1,6 @@
 #include "Ellipse_virtuelle.hh"
 #include "SFML/Graphics.hpp"
+#include <cmath>
 
 Ellipse_virtuelle::Ellipse_virtuelle():Figure(){
     a=0;

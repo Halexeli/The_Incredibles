@@ -2,6 +2,7 @@
 #include "Figure.hh"
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include <cmath>
 
 class Ellipse_virtuelle:Figure{
     //x²+y²=a

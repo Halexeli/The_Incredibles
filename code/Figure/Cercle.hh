@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Ellipse_virtuelle.hh"
-#include "SFML/Graphics.hpp"
+//#include "SFML/Graphics.hpp"
 #include "Point.hh"
 #include <iostream>
 #include <cmath>

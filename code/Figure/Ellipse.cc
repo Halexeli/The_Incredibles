@@ -1,12 +1,14 @@
 #include "Ellipse.hh"
+#include <cmath>
 #include "SFML/Graphics.hpp"
 
 Ellipse::Ellipse() : Ellipse_virtuelle(), b(0), angle(0) {}
 
 Ellipse::Ellipse(const Ellipse& p) : Ellipse_virtuelle(p), b(p.b), angle(p.angle) {}
 
-Ellipse::Ellipse(const Point& p, const double _a, const double _b, const double _angle) 
-    : Ellipse_virtuelle(p, _a), b(_b), angle(_angle) {}
+Ellipse::Ellipse(const Point& p, const double a, const double b, const double angle)
+    : Ellipse_virtuelle(p, a), b(b), angle(angle) {}
+
 
 // getters et setters
 double Ellipse::getB() const {
@@ -22,10 +24,11 @@ void Ellipse::setAngle(double _angle) {
     angle = _angle;} 
 
 // Méthodes :
-double aire() const {
-    return M_PI * a * b; // Aire = π * demi-grand axe * demi-petit axe
+double Ellipse::aire() const {
+    return M_PI * a * b;
 }
-double perimetre() const {
+
+double Ellipse::perimetre() const {
     double h = pow((a - b), 2) / pow((a + b), 2);
     return M_PI * (a + b) * (1 + (3 * h) / (10 + sqrt(4 - 3 * h)));
 }
@@ -47,14 +50,14 @@ void Ellipse::afficher(sf::RenderWindow& window) {
     ellipse.setFillColor(sf::Color(0, 0, 255)); // Bleu
     ellipse.setOutlineThickness(1);
     ellipse.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
-    ellipse.setPosition(static_cast<float>(centre.getX()), static_cast<float>(centre.getY()));
+    ellipse.setPosition(static_cast<float>(getCentre().getX()), static_cast<float>(getCentre().getY()));
     ellipse.setRotation(static_cast<float>(angle));
     window.draw(ellipse);
 }
 // Affichage des informations de l'ellipse
 void Ellipse::afficherInfos() const {
     std::cout << "Ellipse : " << std::endl;
-    std::cout << "Centre : (" << centre.getX() << ", " << centre.getY() << ")" << std::endl;
+    std::cout << "Centre : (" << getCentre().getX() << ", " << getCentre().getY() << ")" << std::endl;
     std::cout << "Demi-grand axe (a) : " << a << std::endl;
     std::cout << "Demi-petit axe (b) : " << b << std::endl;
     std::cout << "Angle de rotation : " << angle << " degrés" << std::endl;
