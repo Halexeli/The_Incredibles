@@ -14,3 +14,8 @@ void Page::draw(Screen &screen){
     for(auto it:List_string)
         it->draw(screen);
 }
+
+void Page::creer_fond(std::vector <Polyedre_regulier*> _Fond){
+    for(auto it:_Fond)
+        Fond.push_back(it);
+}
