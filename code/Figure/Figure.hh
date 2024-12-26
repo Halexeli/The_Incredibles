@@ -10,7 +10,7 @@ class Figure{
         Figure():centre(Point()){};
         Figure(const Point& p):centre(Point(p)){};
         Figure(const Figure& p):centre(p.centre){};
-        const Point& getCentre() const { return centre; }
+        const Point& getCentre() const { return centre; };
 
         ~Figure(){};
         virtual void afficher()=0;
