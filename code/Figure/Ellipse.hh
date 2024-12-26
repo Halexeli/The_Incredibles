@@ -22,7 +22,6 @@ class Ellipse:public Ellipse_virtuelle{
         void redimensionner(double facteurA, double facteurB);
         void pivoter(double angleSupplementaire);
         void afficher(sf::RenderWindow& window); 
-        void afficher() const override;
         void afficherInfos() const;
         ~Ellipse(){};
 };
