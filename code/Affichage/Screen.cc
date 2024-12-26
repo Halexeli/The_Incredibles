@@ -138,3 +138,15 @@ bool Screen::Buttonclicked(float x, float y, float w, float h){
   else
     return(0);
 }
+
+void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x0000FF){
+    sf::CircleShape ellipse;
+    ellipse.setRadius(static_cast<float>(a));  // Définit le rayon
+    ellipse.setScale(1.f, static_cast<float>(b / a)); // Applique une échelle pour simuler une ellipse
+    ellipse.setFillColor(sf::Color(color)); 
+    ellipse.setOutlineThickness(1);
+    ellipse.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
+    ellipse.setPosition(x, y);
+    ellipse.setRotation(static_cast<float>(angle));
+    _win->draw(ellipse);
+}

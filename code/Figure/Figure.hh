@@ -2,6 +2,7 @@
 #pragma once
 #include "Point.hh"
 #include <iostream>
+#include "../Affichage/Screen.hh"
 
 class Figure{
     protected :
@@ -10,8 +11,8 @@ class Figure{
         Figure():centre(Point()){};
         Figure(const Point& p):centre(Point(p)){};
         Figure(const Figure& p):centre(p.centre){};
-        const Point& getCentre() const { return centre; }
+        const Point& getCentre() { return centre; }
 
         ~Figure(){};
-        virtual void afficher()=0;
+        virtual void afficher(Screen &screen)=0;
 };

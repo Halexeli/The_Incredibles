@@ -2,6 +2,7 @@
 #include "Ellipse_virtuelle.hh"
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include "../Affichage/Screen.hh"
 
 class Ellipse:public Ellipse_virtuelle{
     private:
@@ -21,8 +22,7 @@ class Ellipse:public Ellipse_virtuelle{
         double perimetre() const;
         void redimensionner(double facteurA, double facteurB);
         void pivoter(double angleSupplementaire);
-        void afficher(sf::RenderWindow& window); 
-        void afficher() const override;
+        void afficher(Screen &screen); 
         void afficherInfos() const;
         ~Ellipse(){};
 };

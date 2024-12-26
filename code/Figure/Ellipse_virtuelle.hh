@@ -3,6 +3,7 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include <cmath>
+#include "../Affichage/Screen.hh"
 
 class Ellipse_virtuelle:Figure{
     //x²+y²=a
@@ -17,7 +18,6 @@ class Ellipse_virtuelle:Figure{
         void set_a(const double a) {this->a=a;}
         void translater(double dx, double dy);
         virtual void afficherInfos() const;
-        virtual void afficher()=0;
         virtual void redimensionner(double facteur)=0;
         void ajusterDansFenetre(int largeurFenetre, int hauteurFenetre);
         ~Ellipse_virtuelle(){};

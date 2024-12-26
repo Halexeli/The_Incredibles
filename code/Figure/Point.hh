@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "../Affichage/Screen.hh"
 
 
 class Point
@@ -15,7 +14,7 @@ class Point
         Point(const Point& p):x(p.x),y(p.y){};
         ~Point(){};
 //Affiche un point rouge
-        void afficher(Screen &screen){screen.disc(x,y,0.5);};
+//        void afficher(){}; //On include deja Point.hh dans Screen.hh jsp comment faire
     
         float getX(){return(x);};
         float getY(){return(y);};

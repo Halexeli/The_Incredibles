@@ -45,6 +45,7 @@ class Screen{
     @param radius (in pixels)
     @param color 0xRRGGBBAA (default: red)
   */
+
   void light(float x, float y, float height, float width, uint32_t color = 0xFFFF00FF);
    /** draw a lightning
     @param x x-coordinate of the center (in pixels)
@@ -85,11 +86,24 @@ class Screen{
     @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
     @param color 0xRRGGBBAA (default: light blue)
   */
+   void Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x0000FF);
+   /**   draw a irregular figure convex
+    @param x x-coordinate of the center (in pixels)
+    @param y y-coordinate of the center (in pixels)
+    @param a rayon
+    @param b echelle pour simuler une ellipse
+    @param angle angle avec le x-axis
+    @param sommet nombre de sommets
+    @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
+    @param color default : blue
+  */
   void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../../Assets/Times_New_Roman/times_new_roman.ttf");
+  //Permet d'afficher un texte
 
   uint16_t w() const {return _w;}
   uint16_t h() const {return _h;}
   bool Buttonclicked(float x, float y, float w, float h);
+  //permet de voir si un bouton est cliqué
  protected:
 
 
