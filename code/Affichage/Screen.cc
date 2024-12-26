@@ -150,3 +150,13 @@ void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t colo
     ellipse.setRotation(static_cast<float>(angle));
     _win->draw(ellipse);
 }
+
+void Screen::circle(float x, float y, float radius, uint32_t color = 0xFF0000FF){
+    sf::CircleShape circle;
+    circle.setRadius(radius); // Rayon
+    circle.setFillColor(sf::Color(color)); // Rouge
+    circle.setOutlineThickness(1);
+    circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
+    circle.setPosition(x-radius, y-radius); // Centré
+    _win->draw(circle);
+}

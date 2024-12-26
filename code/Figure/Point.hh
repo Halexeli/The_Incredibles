@@ -6,21 +6,21 @@ class Point
     {
     //Arguments:
     protected:
-        int x;
-        int y;
+        double x;
+        double y;
     public:
         Point():x(0),y(0){};
-        Point(float x, float y):x(x),y(y){};
+        Point(double x, double y):x(x),y(y){};
         Point(const Point& p):x(p.x),y(p.y){};
         ~Point(){};
 //Affiche un point rouge
 //        void afficher(){}; //On include deja Point.hh dans Screen.hh jsp comment faire
     
-        float getX(){return(x);};
-        float getY(){return(y);};
+        const double getX(){return(x);};
+        const double getY(){return(y);};
 
-        void setX(float x);
-        void setY(float y);
+        void setX(double _x){x=_x;};
+        void setY(double _y){y=_y;};
 
         
         void operator=(const Point& p){x=p.x;y=p.y;};

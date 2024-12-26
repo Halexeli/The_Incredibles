@@ -46,6 +46,14 @@ class Screen{
     @param color 0xRRGGBBAA (default: red)
   */
 
+   void circle(float x, float y, float radius, uint32_t color = 0xFF0000FF);
+   /** draw a disc
+    @param x x-coordinate of the center (in pixels)
+    @param y y-coordinate of the center (in pixels)
+    @param radius (in pixels)
+    @param color 0xRRGGBBAA (default: red)
+  */
+
   void light(float x, float y, float height, float width, uint32_t color = 0xFFFF00FF);
    /** draw a lightning
     @param x x-coordinate of the center (in pixels)

@@ -19,10 +19,10 @@ public:
     // Méthodes spécifiques au cercle
     double diametre() const;
     double circonference() const;
-    bool contientPoint(const Point& p) const;
+    bool contientPoint( Point& const p) const;
 
     // Méthode d'affichage
-    void afficher(sf::RenderWindow& window);
+    void afficher(Screen &screen);
 
     // Méthode de redimensionnement
     void redimensionner(double facteur);
