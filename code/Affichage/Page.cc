@@ -3,7 +3,9 @@
 int Page::it=0;
 
 void Page::draw(Screen &screen){
-    for(auto it:Formes)
+    for(auto it:Formes_irr)
+        it->afficher();
+    for(auto it:Formes_r)
         it->afficher();
     for(auto it:Spiro)
         it->draw();

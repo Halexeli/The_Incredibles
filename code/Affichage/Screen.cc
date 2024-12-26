@@ -114,7 +114,7 @@ void Screen::Figure_regular(float x, float y,int sommet,float angle, float size,
   _win->draw(convex);
 }
 
-void Screen::Figure_irregular(float x, float y,int sommet,std::vector <float,float> point, uint32_t color){
+void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> point, uint32_t color){
   // crée une forme vide
   sf::ConvexShape convex_irr;
   // définit le nombre de points (sommet)
@@ -122,7 +122,7 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <float,flo
   // définit les points
   int i=0;
   for(auto it:point){
-    convex_irr.setPoint(i, sf::Vector2f(it->first,it->second));
+    convex_irr.setPoint(i, sf::Vector2f(it.getX(),it.getY()));
     i++;
   }
   convex_irr.setFillColor(sf::Color(color));

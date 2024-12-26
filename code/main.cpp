@@ -1,15 +1,18 @@
 #include <iostream>
-#include "Screen.hh"
-#include "Page.hh"
-#include "Bouton.hh"
+#include "Affichage/Screen.hh"
+#include "Affichage/Page.hh"
+#include "Affichage/Bouton.hh"
 
 int main()
 {
     Screen screen(500,750);
     Page page1;
-    page1+=new Bouton(100,100,50,20,0);
-    page1+=new Texte(200, 100, 12, 0xFF0000FF, "test");
-    page1+=new Polyedre_regulier();
+    Bouton* B1=new Bouton(100,100,50,20,0);
+    Texte *T1=new Texte(200, 100, 12, 0xFF0000FF, "test");
+    Polyedre_regulier *P1=new Polyedre_regulier();
+    page1+=B1;
+    page1+=T1;
+    page1+=P1;
     // run the program as long as the window is open
     while (screen.isOpen())
     {
@@ -24,6 +27,9 @@ int main()
         page1.draw(screen);
         screen.render();
     }
+    delete(B1);
+    delete(T1);
+    delete(P1);
 
     return 0;
 }

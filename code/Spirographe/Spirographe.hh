@@ -2,9 +2,9 @@
 //test
 #pragma once 
 #include <iostream>
-#include "Figure/Figure.hh"
-#include "Figure/Polyedre.hh"
-#include "Figure/Ellipse.hh"
+#include "../Figure/Figure.hh"
+#include "../Figure/Polyedre.hh"
+#include "../Figure/Ellipse.hh"
 
 class Spirographe {
 

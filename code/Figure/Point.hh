@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "../Affichage/Screen.hh"
 
 
 class Point
@@ -10,19 +11,19 @@ class Point
         int y;
     public:
         Point():x(0),y(0){};
-        Point(int x, int y):x(x),y(y){};
+        Point(float x, float y):x(x),y(y){};
         Point(const Point& p):x(p.x),y(p.y){};
         ~Point(){};
-
-        void afficher();
+//Affiche un point rouge
+        void afficher(Screen &screen){screen.disc(x,y,0.5);};
     
-        int getX();
-        int getY();
+        float getX(){return(x);};
+        float getY(){return(y);};
 
-        void setX(int x);
-        void setY(int y);
+        void setX(float x);
+        void setY(float y);
 
         
-        void operator=(const Point& p);
-        bool operator==(const Point& p);
+        void operator=(const Point& p){x=p.x;y=p.y;};
+        bool operator==(const Point& p){if(x==p.x&&y==p.y){return(1);}else{return(0);}};
 };
