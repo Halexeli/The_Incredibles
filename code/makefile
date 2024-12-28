@@ -1,28 +1,28 @@
-CC=g++
-CCFLAGS= -Wall -Werror -std=c++11 -g 
-SFML= -lsfml-graphics -lsfml-window -lsfml-system
-SRC= $(wildcard ../*.cc)
-OBJ= $(SRC:.cc=.o)
-TST= $(wildcard *.cc)
-OBJ_TEST = $(filter-out ../main.o, $(OBJ)) $(TST:.cc=.o) 
-%.o: %.cc
-	$(CC) $(CCFLAGS) -I../ -o $@ -c $< $(SFML)
+CXX = g++
+# pour linux nrmlt c ça: CXXFLAGS = -Wall -g  
+# LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+#sur mac:
+CXXFLAGS = -Wall -g -I/opt/homebrew/include 
+LDFLAGS = -L/opt/homebrew/lib -lsfml-graphics -lsfml-window -lsfml-system
+SRC_DIR = code 
+#j'ai spécifié les directories
+FIGURE_DIR = $(SRC_DIR)/Figure
+SPIROGRAPH_DIR = $(SRC_DIR)/Spirographe
+DISPLAY_DIR = $(SRC_DIR)/Affichage
+TEST_DIR = $(SRC_DIR)/test
 
-# Replace "src" with the name of the folder where all your cpp code is
-cppFileNames := $(shell find ./Figure -type f -name "*.cpp")
+#source files
+SRC = $(wildcard $(FIGURE_DIR)/*.cc) $(wildcard $(SPIROGRAPH_DIR)/*.cc) $(wildcard $(DISPLAY_DIR)/*.cc) main.cpp
+OBJ = $(SRC:.cc=.o)
+DEPS = $(wildcard $(FIGURE_DIR)/*.hh) $(wildcard $(SPIROGRAPH_DIR)/*.hh) $(wildcard $(DISPLAY_DIR)/*.hh)
 
-all: compile
+TARGET = main.out 
 
-compile:	
-	mkdir -p bin
-	g++ $(cppFileNames) -I$(SFML_PATH)/include -o bin/app -L$(SFML_PATH)/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network
+all: $(TARGET)
 
-
-main.out : $(OBJ_TEST) 
-	$(CC) $(CCFLAGS)  -o $@ $^ $(SFML)
-
-main: main.out
-	./main.out
-
-clean :
-	rm -f $(OBJ_TEST) main.out
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+%.o: %.cc $(DEPS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+clean:
+	rm -f $(OBJS) $(TARGET)
