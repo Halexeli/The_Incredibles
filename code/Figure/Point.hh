@@ -2,9 +2,7 @@
 #include <iostream>
 
 
-class Point
-    {
-    //Arguments:
+class Point{
     protected:
         int x;
         int y;
@@ -16,8 +14,8 @@ class Point
 
         void afficher();
     
-        int getX();
-        int getY();
+        int getX() const;
+        int getY() const;
 
         void setX(int x);
         void setY(int y);

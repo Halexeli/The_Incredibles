@@ -114,7 +114,7 @@ void Screen::Figure_regular(float x, float y,int sommet,float angle, float size,
   _win->draw(convex);
 }
 
-void Screen::Figure_irregular(float x, float y,int sommet,std::vector <float,float> point, uint32_t color){
+void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> point, uint32_t color){
   // crée une forme vide
   sf::ConvexShape convex_irr;
   // définit le nombre de points (sommet)
@@ -122,7 +122,7 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <float,flo
   // définit les points
   int i=0;
   for(auto it:point){
-    convex_irr.setPoint(i, sf::Vector2f(it->first,it->second));
+    convex_irr.setPoint(i, sf::Vector2f(it.getX(),it.getY()));
     i++;
   }
   convex_irr.setFillColor(sf::Color(color));
@@ -137,4 +137,26 @@ bool Screen::Buttonclicked(float x, float y, float w, float h){
     return(1);
   else
     return(0);
+}
+
+void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x0000FF){
+    sf::CircleShape ellipse;
+    ellipse.setRadius(static_cast<float>(a));  // Définit le rayon
+    ellipse.setScale(1.f, static_cast<float>(b / a)); // Applique une échelle pour simuler une ellipse
+    ellipse.setFillColor(sf::Color(color)); 
+    ellipse.setOutlineThickness(1);
+    ellipse.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
+    ellipse.setPosition(x, y);
+    ellipse.setRotation(static_cast<float>(angle));
+    _win->draw(ellipse);
+}
+
+void Screen::circle(float x, float y, float radius, uint32_t color = 0xFF0000FF){
+    sf::CircleShape circle;
+    circle.setRadius(radius); // Rayon
+    circle.setFillColor(sf::Color(color)); // Rouge
+    circle.setOutlineThickness(1);
+    circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
+    circle.setPosition(x-radius, y-radius); // Centré
+    _win->draw(circle);
 }

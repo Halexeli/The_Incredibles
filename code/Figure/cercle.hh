@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Ellipse_virtuelle.hh"
 #include "SFML/Graphics.hpp"
 #include "Point.hh"
@@ -8,25 +7,20 @@
 
 class Cercle : public Ellipse_virtuelle {
 public:
-    // Constructeurs
     Cercle();
     Cercle(const Cercle& c);
     Cercle(const Point& centre, const double rayon);
-
-    // Destructeur
     ~Cercle();
 
-    // Méthodes spécifiques au cercle
     double diametre() const;
     double circonference() const;
-    bool contientPoint(const Point& p) const;
+    bool contientPoint(const Point& p) const override;
 
-    // Méthode d'affichage
-    void afficher(sf::RenderWindow& window);
+    using Ellipse_virtuelle::afficher;
+    void afficher(sf::RenderWindow& window) override;
 
-    // Méthode de redimensionnement
-    void redimensionner(double facteur);
+    using Ellipse_virtuelle::redimensionner;
+    void redimensionner(double facteur) override;
 
-    // Méthode d'informations
-    void afficherInfos() const;
+    void afficherInfos() const override;
 };
