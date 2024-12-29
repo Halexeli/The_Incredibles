@@ -14,7 +14,7 @@ public:
     Polyedre_virtuel(const Polyedre_virtuel& p);
     Polyedre_virtuel(const Point& p, int sommets);
     virtual ~Polyedre_virtuel();
-    virtual void afficher(sf::RenderWindow& window) = 0;
+    virtual void afficher(Screen& window) = 0;
     virtual bool contientPoint(const Point& point) const = 0;
 };
 
@@ -27,7 +27,7 @@ public:
     Polyedre_regulier(const Polyedre_regulier& p);
     Polyedre_regulier(const Point& p, int sommets, double cote, double angle);
     ~Polyedre_regulier();
-    void afficher(sf::RenderWindow& window) override;
+    void afficher(Screen& window) override;
     bool contientPoint(const Point& point) const override;
 };
 
@@ -39,6 +39,6 @@ public:
     Polyedre_irregulier(const Polyedre_irregulier& p);
     Polyedre_irregulier(const Point& p, int sommets, std::stack<std::vector<std::pair<double, double> > > list_sommets);
     ~Polyedre_irregulier();
-    void afficher(sf::RenderWindow& window) override;
+    void afficher(Screen& window) override;
     bool contientPoint(const Point& point) const override;
 };

@@ -6,10 +6,6 @@
 
 /* Positions origin are upper left corner */
 
-Screen::Screen(uint16_t h,uint16_t w):_w(w),_h(h){
-   _win = new sf::RenderWindow(sf::VideoMode(_w , _h+50),"Incredible Spirograph", sf::Style::Default);
-}
-
 
 void Screen::render()
 {
@@ -94,9 +90,9 @@ void Screen::text(float x ,float y,std::string str_txt,int size, uint32_t color,
   sf::Text text;
 
   text.setFont(font);
-text.setCharacterSize(size);
+  text.setCharacterSize(size);
   text.setString(str_txt);
-  text.setColor(sf::Color(color));
+  text.setFillColor(sf::Color(color));
   text.setPosition(x,y);
   _win->draw(text);
 }
@@ -130,16 +126,12 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> po
   _win->draw(convex_irr);
 }
 
-bool Screen::Buttonclicked(float x, float y, float w, float h){
-  // get the local mouse position (relative to a window)
-  sf::Vector2i localPosition = sf::Mouse::getPosition(*_win); // window is a sf::Window
-  if((x<localPosition.x)||(x+w>localPosition.x)||(y<localPosition.y)||(y+h>localPosition.y))
-    return(1);
-  else
-    return(0);
+bool Screen::Buttonclicked(float x, float y, float w, float h) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*_win);
+    return (mousePos.x >= x && mousePos.x <= x + w && mousePos.y >= y && mousePos.y <= y + h && sf::Mouse::isButtonPressed(sf::Mouse::Left));
 }
 
-void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x0000FF){
+void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t color){
     sf::CircleShape ellipse;
     ellipse.setRadius(static_cast<float>(a));  // Définit le rayon
     ellipse.setScale(1.f, static_cast<float>(b / a)); // Applique une échelle pour simuler une ellipse
@@ -151,10 +143,10 @@ void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t colo
     _win->draw(ellipse);
 }
 
-void Screen::circle(float x, float y, float radius, uint32_t color = 0xFF0000FF){
+void Screen::circle(float x, float y, float radius, uint32_t color){
     sf::CircleShape circle;
     circle.setRadius(radius); // Rayon
-    circle.setFillColor(sf::Color(color)); // Rouge
+    circle.setFillColor(sf::Color(color)); // transparent
     circle.setOutlineThickness(1);
     circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
     circle.setPosition(x-radius, y-radius); // Centré

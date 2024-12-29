@@ -8,7 +8,10 @@ public:
     //construire un spirographe 
     Spirographe(float R, float r, float l);
     void update(float deltaTime);
-    void draw(sf::RenderWindow& window);
+    void draw(Screen& window);
+    void setR(float r) { m_r = r; }
+    float getR() const { return m_r; }
+    void reset();
 
 private:
     //ceci pour générer la position du crayon

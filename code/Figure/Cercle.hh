@@ -22,7 +22,7 @@ public:
     bool contientPoint(const Point& p) const;
 
     // Méthode d'affichage
-    void afficher(sf::RenderWindow& window);
+    void afficher(Screen& window);
 
     // Méthode de redimensionnement
     void redimensionner(double facteur);

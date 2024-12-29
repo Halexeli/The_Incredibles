@@ -43,16 +43,8 @@ void Ellipse::pivoter(double angleSupplementaire) {
     while (angle >= 360) angle -= 360;
 }
 // Affiche l'ellipse dans la fenêtre window
-void Ellipse::afficher(sf::RenderWindow& window) {
-    sf::CircleShape ellipse;
-    ellipse.setRadius(static_cast<float>(a));  // Définit le rayon
-    ellipse.setScale(1.f, static_cast<float>(b / a)); // Applique une échelle pour simuler une ellipse
-    ellipse.setFillColor(sf::Color(0, 0, 255)); // Bleu
-    ellipse.setOutlineThickness(1);
-    ellipse.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
-    ellipse.setPosition(static_cast<float>(getCentre().getX()), static_cast<float>(getCentre().getY()));
-    ellipse.setRotation(static_cast<float>(angle));
-    window.draw(ellipse);
+void Ellipse::afficher(Screen& window) {
+    window.Ellipse(static_cast<float>(getCentre().getX()), static_cast<float>(getCentre().getY()), static_cast<float>(a), static_cast<float>(b), static_cast<float>(angle), 0x0000FFFF); // Draw ellipse using Screen's ellipse method
 }
 // Affichage des informations de l'ellipse
 void Ellipse::afficherInfos() const {

@@ -1,36 +1,57 @@
 #include <SFML/Graphics.hpp>
+#include "Affichage/Page.hh"  
+#include "Affichage/Screen.hh"
 #include "Spirographe/Spirographe.hh"
+#include "Affichage/Bouton.hh"
+
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Spirographe with circles");
+    Screen screen(800, 600); 
 
-    float R = 200.f; 
-    float r = 30.f; 
-    float l = 0.3f;
-    Spirographe spirographe(R, r, l);
-    //horloge pour mesurer le temps
+    Page page;
+    //spiro
+    Spirographe *spirographe = new Spirographe(200.f, 30.f, 0.3f); 
+    page += spirographe;
+    //boutons
+    Bouton *plusBouton = new Bouton(50, 50, 50, 50, "+");
+    page += plusBouton;
+    Bouton *moinsBouton = new Bouton(50, 150, 50, 50, "-");
+    page += moinsBouton;
+    Bouton *resetBouton = new Bouton(50, 250, 100, 50, "Reset");
+    page += resetBouton;
+
     sf::Clock clock;
-    //game loop
-    while (window.isOpen()) {
+
+    while (screen.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (screen.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                screen.close();
             }
         }
-        //deltaTime: temps écoulé depuis la dernière frame
-        //on multiplie par 2 pour accélérer le mouvement
-        float deltaTime = clock.restart().asSeconds() * 10;
 
-        //ceci permet de mettre à jour la position du crayon
-        //comme ça on peut le dessiner en temps réel
-        spirographe.update(deltaTime);
-        //clear car on veut dessiner le spirographe à chaque frame i.E progressivement 
-        
-        window.clear();
-        spirographe.draw(window);
-        window.display();
+        if (plusBouton->Ispressed(screen)) {
+            spirographe->setR(spirographe->getR() + 0.1);
+        }
+
+        if (moinsBouton->Ispressed(screen)) {
+            spirographe->setR(spirographe->getR() - 0.1);
+        }
+        if (resetBouton->Ispressed(screen)) {
+            spirographe->reset();
+        }
+
+        float deltaTime = clock.restart().asSeconds();
+        spirographe->update(deltaTime);
+
+        page.draw(screen);
+        screen.render();
     }
+
+    delete spirographe;
+    delete plusBouton;
+    delete moinsBouton;
+    delete resetBouton;
 
     return 0;
 }

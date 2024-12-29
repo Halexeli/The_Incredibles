@@ -58,9 +58,17 @@ void Spirographe::update(float deltaTime) {
     m_Crayon.setPosition(newCrayonPosition);
 }
 
-void Spirographe::draw(sf::RenderWindow& window) {
+void Spirographe::draw(Screen& window) {
     window.draw(m_SpirographePoints);
     m_outerCircle.afficher(window);
     m_innerCircle.afficher(window);
     window.draw(m_Crayon);
+}
+
+void Spirographe::reset() {
+    m_time = 0.0f;
+    m_SpirographePoints.clear();
+    m_lastCrayonPosition = genererCrayonPosition(m_time);
+    m_innerCircle = Cercle(Point(m_outerCircle.getCentre().getX() + m_R - m_r, m_outerCircle.getCentre().getY()), m_r);
+    m_Crayon.setPosition(m_lastCrayonPosition);
 }

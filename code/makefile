@@ -10,10 +10,10 @@ CXXFLAGS = -std=c++17 -stdlib=libc++
 #LDFLAGS = -LC:/path/to/sfml/lib
 #LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
-INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I./Figure -I./Spirographe
+INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I./Figure -I./Spirographe -I./Affichage
 LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
-SOURCES = main.cpp ./Figure/*.cc ./Spirographe/*.cc
+SOURCES = main.cpp ./Figure/*.cc ./Spirographe/*.cc ./Affichage/*.cc
 TARGET = spirograph
 
 #source files

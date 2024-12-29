@@ -30,14 +30,8 @@ bool Cercle::contientPoint(const Point& p) const {
 
 // --- Méthode d'affichage ---
 
-void Cercle::afficher(sf::RenderWindow& window) {
-    sf::CircleShape circle;
-    circle.setRadius(static_cast<float>(a)); // Rayon
-    circle.setFillColor(sf::Color(0, 0, 0, 0));
-    circle.setOutlineThickness(1);
-    circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
-    circle.setPosition(static_cast<float>(centre.getX() - a), static_cast<float>(centre.getY() - a)); // Centré
-    window.draw(circle);
+void Cercle::afficher(Screen& window) {
+    window.circle(centre.getX(), centre.getY(), a); // Draw circle using Screen's circle method
 }
 // --- Méthode de redimensionnement ---
 

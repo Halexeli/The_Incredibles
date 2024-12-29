@@ -25,7 +25,7 @@ public:
     void pivoter(double angleSupplementaire);
 
     using Ellipse_virtuelle::afficher;
-    void afficher(sf::RenderWindow& window);
+    void afficher(Screen& window);
 
     void afficherInfos() const;
 };

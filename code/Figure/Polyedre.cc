@@ -17,7 +17,7 @@ Polyedre_regulier::Polyedre_regulier(const Polyedre_regulier& p) : Polyedre_virt
 Polyedre_regulier::Polyedre_regulier(const Point& p, int sommets, double cote, double angle) : Polyedre_virtuel(p, sommets), cote(cote), angle(angle) {}
 Polyedre_regulier::~Polyedre_regulier() {}
 //affiche un polygone régulier
-void Polyedre_regulier::afficher(sf::RenderWindow& window) {
+void Polyedre_regulier::afficher(Screen& window) {
     sf::ConvexShape polygon;
     polygon.setPointCount(sommets);
     //angle step= angle entre chaque sommet
@@ -76,7 +76,7 @@ Polyedre_irregulier::Polyedre_irregulier(const Point& p, int sommets, std::stack
 Polyedre_irregulier::~Polyedre_irregulier() {}
 
 
-void Polyedre_irregulier::afficher(sf::RenderWindow& window) {
+void Polyedre_irregulier::afficher(Screen& window) {
     if (list_sommets.empty()) return;
     //LineStrip: permet de dessiner des lignes entre les sommets
     sf::VertexArray lines(sf::LineStrip);
