@@ -60,6 +60,14 @@ void Ellipse::afficherInfos() const {
     std::cout << "Aire : " << aire() << std::endl;
     std::cout << "Périmètre (approximation) : " << perimetre() << std::endl;
 }
+bool Ellipse::contientPoint(const Point& point) const {
+    double dx = point.getX() - getCentre().getX();
+    double dy = point.getY() - getCentre().getY();
+    double angleRad = angle * M_PI / 180;
+    double x = cos(angleRad) * dx + sin(angleRad) * dy;
+    double y = -sin(angleRad) * dx + cos(angleRad) * dy;
+    return (pow(x, 2) / pow(a, 2) + pow(y, 2) / pow(b, 2)) <= 1;
+}
 
 
 
