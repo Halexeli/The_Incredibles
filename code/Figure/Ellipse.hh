@@ -19,13 +19,10 @@ public:
 
     double aire() const;
     double perimetre() const;
-    //nb: 'using' permet de réutiliser une méthode de la classe mère
-    using Ellipse_virtuelle::redimensionner;
     void redimensionner(double facteurA, double facteurB);
+    void redimensionner(double facteur) override;
     void pivoter(double angleSupplementaire);
-
-    using Ellipse_virtuelle::afficher;
-    void afficher(Screen& window);
-
-    void afficherInfos() const;
+    void afficher(Screen& window) override;
+    void contientPoint(const Point& point) const override;
+    void afficherInfos() const override;
 };

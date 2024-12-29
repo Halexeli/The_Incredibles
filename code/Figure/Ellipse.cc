@@ -37,6 +37,10 @@ void Ellipse::redimensionner(double facteurA, double facteurB) {
     a *= facteurA;
     b *= facteurB;
 }
+void Ellipse::redimensionner(double facteur) {
+    a *= facteur;
+    b *= facteur;
+}
 // Fait pivoter l'ellipse de l'angle angleSupplementaire
 void Ellipse::pivoter(double angleSupplementaire) {
     angle += angleSupplementaire;
