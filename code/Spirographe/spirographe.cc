@@ -2,12 +2,11 @@
 #include <cmath>
 
 //nb: mtime est le temps écoulé
-Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(Point(400, 300), R), m_innerCircle(Point(400 + (R - r), 300), r), m_Crayon(2) 
+Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(Point(400, 300), R), m_innerCircle(Point(400 + (R - r), 300), r), m_Crayon(Point(0, 0), 2),m_color(sf::Color::Green)
 {       //last position du crayon initialisée à la position du crayon au temps 0
         m_lastCrayonPosition = genererCrayonPosition(m_time);
         //couleur du crayon
         m_Crayon.setFillColor(sf::Color::Red);
-        m_Crayon.setOrigin(2, 2);
     }
 
 //equatoins utilisées: 
@@ -37,14 +36,13 @@ void Spirographe::update(float deltaTime) {
     m_time += deltaTime; 
     sf::Vector2f newCrayonPosition = genererCrayonPosition(m_time); //on génère la nouvelle position du crayon
 
-
     
     if (m_SpirographePoints.getVertexCount() > 0) { 
-        //
-        m_SpirographePoints.append(sf::Vertex(m_lastCrayonPosition, sf::Color::Green));
-        m_SpirographePoints.append(sf::Vertex(newCrayonPosition, sf::Color::Green));
+        
+        m_SpirographePoints.append(sf::Vertex(m_lastCrayonPosition, m_color));
+        m_SpirographePoints.append(sf::Vertex(newCrayonPosition, m_color));
     } else { 
-        m_SpirographePoints.append(sf::Vertex(newCrayonPosition, sf::Color::Green));
+        m_SpirographePoints.append(sf::Vertex(newCrayonPosition, m_color));
     }
 
     m_lastCrayonPosition = newCrayonPosition;
@@ -55,14 +53,14 @@ void Spirographe::update(float deltaTime) {
     m_innerCircle = Cercle(Point(centerX + innerX, centerY + innerY), m_r);
     
 
-    m_Crayon.setPosition(newCrayonPosition);
+    m_Crayon.setCentre(Point(newCrayonPosition.x, newCrayonPosition.y));
 }
 
 void Spirographe::draw(Screen& window) {
     window.draw(m_SpirographePoints);
     m_outerCircle.afficher(window);
     m_innerCircle.afficher(window);
-    window.draw(m_Crayon);
+    m_Crayon.afficher(window);
 }
 
 void Spirographe::reset() {
@@ -70,5 +68,14 @@ void Spirographe::reset() {
     m_SpirographePoints.clear();
     m_lastCrayonPosition = genererCrayonPosition(m_time);
     m_innerCircle = Cercle(Point(m_outerCircle.getCentre().getX() + m_R - m_r, m_outerCircle.getCentre().getY()), m_r);
-    m_Crayon.setPosition(m_lastCrayonPosition);
+    m_Crayon.setCentre(Point(m_lastCrayonPosition.x, m_lastCrayonPosition.y));
+    m_color = sf::Color::Green;
+}
+
+void Spirographe::setColor(const sf::Color& color) {
+    m_color = color;
+    m_Crayon.setFillColor(color);
+    for (size_t i = 0; i < m_SpirographePoints.getVertexCount(); ++i) {
+        m_SpirographePoints[i].color = color;
+    }
 }

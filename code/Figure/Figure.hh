@@ -6,12 +6,15 @@
 class Figure {
 protected:
     Point centre;
+    sf::Color _color;
 public:
     Figure() : centre(Point()) {}
     Figure(const Point& p) : centre(p) {}
     virtual ~Figure() {}
     
     Point getCentre() const { return centre; }
+    void setCentre(const Point& p) { centre = p; }
+    void setFillColor(sf::Color color) { _color = color; }
     virtual void afficher(Screen& window) = 0;
     virtual bool contientPoint(const Point& point) const = 0;
 };

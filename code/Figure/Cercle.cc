@@ -31,7 +31,7 @@ bool Cercle::contientPoint(const Point& p) const {
 // --- Méthode d'affichage ---
 
 void Cercle::afficher(Screen& window) {
-    window.circle(centre.getX(), centre.getY(), a); // Draw circle using Screen's circle method
+    window.circle(centre.getX(), centre.getY(), a); 
 }
 // --- Méthode de redimensionnement ---
 

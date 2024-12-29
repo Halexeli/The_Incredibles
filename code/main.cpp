@@ -19,8 +19,26 @@ int main() {
     page += moinsBouton;
     Bouton *resetBouton = new Bouton(50, 250, 100, 50, "Reset");
     page += resetBouton;
+    Bouton *speedPlus = new Bouton(50, 350, 50, 50, ">");
+    page += speedPlus;
+    Bouton *speedMoins = new Bouton(50, 450, 50, 50, "<");
+    page += speedMoins;
+    //other half of the screen
+    Bouton *resetSpeed = new Bouton(600, 50, 100, 50, "Reset Speed");
+    page += resetSpeed;
+    Bouton *stop = new Bouton(600, 150, 100, 50, "Stop");
+    page += stop;
+    Bouton *colorButton = new Bouton(600, 250, 100, 50, "Color");
+    page += colorButton;
+
 
     sf::Clock clock;
+    float speed = 0.5f;
+    //green pour bien commencer
+    sf::Color currentCol= sf::Color::Green;
+
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
 
     while (screen.isOpen()) {
         sf::Event event;
@@ -29,7 +47,6 @@ int main() {
                 screen.close();
             }
         }
-
         if (plusBouton->Ispressed(screen)) {
             spirographe->setR(spirographe->getR() + 0.1);
         }
@@ -37,13 +54,34 @@ int main() {
         if (moinsBouton->Ispressed(screen)) {
             spirographe->setR(spirographe->getR() - 0.1);
         }
+        if (resetSpeed->Ispressed(screen)) {
+            speed = 0.5f;
+        }
         if (resetBouton->Ispressed(screen)) {
             spirographe->reset();
         }
+        if ((speed < 0.0f) || (stop->Ispressed(screen))) {
+            speed = 0.0f;
+        }
+        else{
+            if (speedPlus->Ispressed(screen)) {
+                speed += 0.001f; 
+            }
+            if ((speedMoins->Ispressed(screen))) {
+                speed -= 0.001f;
+            }
+        }
+        if (colorButton->Ispressed(screen)) {
+            currentCol = sf::Color(
+                std::rand() % 256, // Red
+                std::rand() % 256, // Green
+                std::rand() % 256  // Blue
+            );
+            spirographe->setColor(currentCol);
+        }
 
-        float deltaTime = clock.restart().asSeconds();
+        float deltaTime = clock.restart().asSeconds() * speed;
         spirographe->update(deltaTime);
-
         page.draw(screen);
         screen.render();
     }
@@ -52,6 +90,11 @@ int main() {
     delete plusBouton;
     delete moinsBouton;
     delete resetBouton;
+    delete speedPlus;
+    delete speedMoins;
+    delete resetSpeed;
+    delete stop;
 
     return 0;
 }
+

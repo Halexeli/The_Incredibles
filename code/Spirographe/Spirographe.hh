@@ -12,6 +12,7 @@ public:
     void setR(float r) { m_r = r; }
     float getR() const { return m_r; }
     void reset();
+    void setColor(const sf::Color& color);
 
 private:
     //ceci pour générer la position du crayon
@@ -34,5 +35,8 @@ private:
     Cercle m_innerCircle;
 
     //crayon
-    sf::CircleShape m_Crayon;
+    Cercle m_Crayon;
+
+    //colors:
+    sf::Color m_color;
 };

@@ -21,6 +21,7 @@ public:
     double circonference() const;
     bool contientPoint(const Point& p) const;
 
+
     // Méthode d'affichage
     void afficher(Screen& window);
 
