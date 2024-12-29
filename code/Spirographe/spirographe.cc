@@ -16,10 +16,11 @@ Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_
 
 sf::Vector2f Spirographe::genererCrayonPosition(float time) const {
     //ici on génère la position d'un crayon en fct du temps
-    
+    float centreX = m_outerCircle.getCentre().getX();
+    float centreY = m_outerCircle.getCentre().getY();
     float CrayonX = (m_R - m_r) * cos(time) + m_l * m_r * cos((m_R - m_r) * time / m_r);
     float CrayonY = (m_R - m_r) * sin(time) - m_l * m_r * sin((m_R - m_r) * time / m_r);
-    return sf::Vector2f(400.f + CrayonX, 300.f + CrayonY); 
+    return sf::Vector2f(centreX + CrayonX, centreY + CrayonY);
 }
 
 //le update sert à mettre à jour la position du crayon en fonction du deltatime
@@ -47,11 +48,12 @@ void Spirographe::update(float deltaTime) {
     }
 
     m_lastCrayonPosition = newCrayonPosition;
-
+    float centerX = m_outerCircle.getCentre().getX();
+    float centerY = m_outerCircle.getCentre().getY();
     float innerX = (m_R - m_r) * cos(m_time);
     float innerY = (m_R - m_r) * sin(m_time);
-    m_innerCircle = Cercle(Point(400.f + innerX, 300.f + innerY), m_r);
-
+    m_innerCircle = Cercle(Point(centerX + innerX, centerY + innerY), m_r);
+    
 
     m_Crayon.setPosition(newCrayonPosition);
 }

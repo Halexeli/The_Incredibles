@@ -5,8 +5,8 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Spirographe with circles");
 
     float R = 200.f; 
-    float r = 57.f; 
-    float l = 0.9f;
+    float r = 30.f; 
+    float l = 0.3f;
     Spirographe spirographe(R, r, l);
     //horloge pour mesurer le temps
     sf::Clock clock;
@@ -20,7 +20,7 @@ int main() {
         }
         //deltaTime: temps écoulé depuis la dernière frame
         //on multiplie par 2 pour accélérer le mouvement
-        float deltaTime = clock.restart().asSeconds() * 2;
+        float deltaTime = clock.restart().asSeconds() * 10;
 
         //ceci permet de mettre à jour la position du crayon
         //comme ça on peut le dessiner en temps réel
