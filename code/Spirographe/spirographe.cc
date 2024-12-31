@@ -7,6 +7,7 @@ Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_
         m_lastCrayonPosition = genererCrayonPosition(m_time);
         //couleur du crayon
         m_Crayon.setFillColor(sf::Color::Red);
+        initCrayon = l;
     }
 
 //equatoins utilisées: 
@@ -63,6 +64,7 @@ void Spirographe::draw(Screen& window) {
     m_Crayon.afficher(window);
 }
 
+
 void Spirographe::reset() {
     m_time = 0.0f;
     m_SpirographePoints.clear();
@@ -70,6 +72,8 @@ void Spirographe::reset() {
     m_innerCircle = Cercle(Point(m_outerCircle.getCentre().getX() + m_R - m_r, m_outerCircle.getCentre().getY()), m_r);
     m_Crayon.setCentre(Point(m_lastCrayonPosition.x, m_lastCrayonPosition.y));
     m_color = sf::Color::Green;
+    m_l = initCrayon;
+    
 }
 
 void Spirographe::setColor(const sf::Color& color) {

@@ -30,12 +30,17 @@ int main() {
     page += stop;
     Bouton *colorButton = new Bouton(600, 250, 100, 50, "Color");
     page += colorButton;
+    Bouton *crayonPlus = new Bouton(600, 350, 50, 50, "pen+");
+    page += crayonPlus;
+    Bouton *crayonMoins = new Bouton(600, 450, 50, 50, "pen-");
+    page += crayonMoins;
 
 
     sf::Clock clock;
     float speed = 0.5f;
     //green pour bien commencer
     sf::Color currentCol= sf::Color::Green;
+    //current size crayon
 
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
@@ -78,6 +83,16 @@ int main() {
                 std::rand() % 256  // Blue
             );
             spirographe->setColor(currentCol);
+        }
+        if (spirographe->getCrayonSize() < 0.0f) {
+            spirographe->setCrayonSize(0.0f);
+        }
+        if (crayonPlus->Ispressed(screen)) {
+            spirographe->setCrayonSize(spirographe->getCrayonSize() + 0.001);
+        }
+
+        if (crayonMoins->Ispressed(screen) && spirographe->getCrayonSize() > 0.0f) {
+            spirographe->setCrayonSize(spirographe->getCrayonSize() - 0.001);
         }
 
         float deltaTime = clock.restart().asSeconds() * speed;

@@ -13,12 +13,14 @@ public:
     float getR() const { return m_r; }
     void reset();
     void setColor(const sf::Color& color);
+    void setCrayonSize(float size) { m_l = size; }
+    float getCrayonSize() const { return m_l; }
 
 private:
     //ceci pour générer la position du crayon
     //afin de le dessiner sur l'écran en temps réel
     sf::Vector2f genererCrayonPosition(float time) const;
-
+    float initCrayon;
     float m_R;   //cercle fixe
     float m_r;   //cercle roulant
     float m_l;   //distance du crayon par rapport au centre du cercle intérieur
