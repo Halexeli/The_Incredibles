@@ -14,9 +14,9 @@
      @param h height of the window (e.g. 500)
  **/
 
-class Screen{
+class Screen: public sf::RenderWindow {
  public:
-  Screen(uint16_t h, uint16_t w);
+  Screen(uint16_t h, uint16_t w) : sf::RenderWindow(sf::VideoMode(h, w), "Incredible Spirographe"), _win(this){};
   ~Screen(){delete _win;};
   bool isOpen(){return _win->isOpen();}
   void close(){_win->close();}
@@ -46,12 +46,12 @@ class Screen{
     @param color 0xRRGGBBAA (default: red)
   */
 
-   void circle(float x, float y, float radius, uint32_t color = 0xFF0000FF);
+   void circle(float x, float y, float radius, uint32_t color = 0x00000000 );
    /** draw a disc
     @param x x-coordinate of the center (in pixels)
     @param y y-coordinate of the center (in pixels)
     @param radius (in pixels)
-    @param color 0xRRGGBBAA (default: red)
+    @param color   default transparent color = 0x00000000
   */
 
   void light(float x, float y, float height, float width, uint32_t color = 0xFFFF00FF);
@@ -94,7 +94,7 @@ class Screen{
     @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
     @param color 0xRRGGBBAA (default: light blue)
   */
-   void Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x0000FF);
+   void Ellipse(float x, float y,float a, float b,float angle,uint32_t color= 0x00000000);
    /**   draw a irregular figure convex
     @param x x-coordinate of the center (in pixels)
     @param y y-coordinate of the center (in pixels)

@@ -1,18 +1,20 @@
-// classe abstraite pour toutes les formes géométriques
 #pragma once
 #include "Point.hh"
-#include <iostream>
+#include <SFML/Graphics.hpp>
 #include "../Affichage/Screen.hh"
 
-class Figure{
-    protected :
-        Point centre; // centre de la figure
-    public:
-        Figure():centre(Point()){};
-        Figure(const Point& p):centre(Point(p)){};
-        Figure(const Figure& p):centre(p.centre){};
-        Point getCentre() { return centre; };
-
-        ~Figure(){};
-        virtual void afficher(Screen &screen)=0;
+class Figure {
+protected:
+    Point centre;
+    sf::Color _color;
+public:
+    Figure() : centre(Point()) {}
+    Figure(const Point& p) : centre(p) {}
+    virtual ~Figure() {}
+    
+    Point getCentre() const { return centre; }
+    void setCentre(const Point& p) { centre = p; }
+    void setFillColor(sf::Color color) { _color = color; }
+    virtual void afficher(Screen& window) = 0;
+    virtual bool contientPoint(const Point& point) const = 0;
 };

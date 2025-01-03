@@ -1,6 +1,5 @@
 #include "Cercle.hh"
 #include <cmath>
-#include <SFML/Graphics.hpp>
 
 // --- Constructeurs ---
 
@@ -23,8 +22,7 @@ double Cercle::circonference() const {
     return 2 * M_PI * a; // Circonférence = 2πr
 }
 
-bool Cercle::contientPoint( Point& const p) const {
-    Point centre=getCentre();
+bool Cercle::contientPoint(const Point& p) const {
     double dx = p.getX() - centre.getX();
     double dy = p.getY() - centre.getY();
     return (dx * dx + dy * dy) <= (a * a); // Distance au centre <= rayon²
@@ -32,11 +30,9 @@ bool Cercle::contientPoint( Point& const p) const {
 
 // --- Méthode d'affichage ---
 
-void Cercle::afficher(Screen &screen) {
-    Point centre=getCentre();
-    screen.circle(centre.getX(),centre.getY(),a);
+void Cercle::afficher(Screen& window) {
+    window.circle(centre.getX(), centre.getY(), a); 
 }
-
 // --- Méthode de redimensionnement ---
 
 void Cercle::redimensionner(double facteur) {
@@ -46,7 +42,6 @@ void Cercle::redimensionner(double facteur) {
 // --- Méthode d'informations ---
 
 void Cercle::afficherInfos() const {
-        Point centre=getCentre();
     std::cout << "Cercle : " << std::endl;
     std::cout << "Centre : (" << centre.getX() << ", " << centre.getY() << ")" << std::endl;
     std::cout << "Rayon : " << a << std::endl;

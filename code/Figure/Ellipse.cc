@@ -37,15 +37,18 @@ void Ellipse::redimensionner(double facteurA, double facteurB) {
     a *= facteurA;
     b *= facteurB;
 }
+void Ellipse::redimensionner(double facteur) {
+    a *= facteur;
+    b *= facteur;
+}
 // Fait pivoter l'ellipse de l'angle angleSupplementaire
 void Ellipse::pivoter(double angleSupplementaire) {
     angle += angleSupplementaire;
     while (angle >= 360) angle -= 360;
 }
 // Affiche l'ellipse dans la fenêtre window
-void Ellipse::afficher(Screen &screen) {
-    Point centre=getCentre();
-    screen.Ellipse(centre.getX(),centre.getY(),a,b,angle);
+void Ellipse::afficher(Screen& window) {
+    window.Ellipse(static_cast<float>(getCentre().getX()), static_cast<float>(getCentre().getY()), static_cast<float>(a), static_cast<float>(b), static_cast<float>(angle), 0x0000FFFF); // Draw ellipse using Screen's ellipse method
 }
 // Affichage des informations de l'ellipse
 void Ellipse::afficherInfos() const {
@@ -56,6 +59,14 @@ void Ellipse::afficherInfos() const {
     std::cout << "Angle de rotation : " << angle << " degrés" << std::endl;
     std::cout << "Aire : " << aire() << std::endl;
     std::cout << "Périmètre (approximation) : " << perimetre() << std::endl;
+}
+bool Ellipse::contientPoint(const Point& point) const {
+    double dx = point.getX() - getCentre().getX();
+    double dy = point.getY() - getCentre().getY();
+    double angleRad = angle * M_PI / 180;
+    double x = cos(angleRad) * dx + sin(angleRad) * dy;
+    double y = -sin(angleRad) * dx + cos(angleRad) * dy;
+    return (pow(x, 2) / pow(a, 2) + pow(y, 2) / pow(b, 2)) <= 1;
 }
 
 
