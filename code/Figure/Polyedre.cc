@@ -81,9 +81,9 @@ void Polyedre_irregulier::afficher(Screen& window) {
     //LineStrip: permet de dessiner des lignes entre les sommets
     sf::VertexArray lines(sf::LineStrip);
     //on parcourt la pile
-    std::stack<std::vector<std::pair<double, double> > > temp_stack = list_sommets;
+    std::vector<std::pair<double, double> > temp_stack = list_sommets;
     while (!temp_stack.empty()) {
-        std::vector<std::pair<double, double> > vec = temp_stack.top(); //on récupère le sommet
+        std::pair<double, double>  vec = temp_stack.top(); //on récupère le sommet
         temp_stack.pop(); //on le retire de la pile
         for (const auto& pair : vec) {
             //on dessine les lignes entre les sommets

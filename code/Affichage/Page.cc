@@ -17,7 +17,7 @@ void Page::draw(Screen &screen) {
     }
 }
 
-void Page::creer_fond(std::vector <Polyedre_regulier*> _Fond){
+void Page::creer_fond(std::vector <Polyedre_irregulier*> _Fond){
     for(auto it:_Fond)
         Fond.push_back(it);
 }

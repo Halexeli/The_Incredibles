@@ -34,7 +34,7 @@ public:
 
 class Polyedre_irregulier : public Polyedre_virtuel {
 private:
-    std::stack<std::vector<std::pair<double, double> > > list_sommets;
+    std::vector<std::pair<double, double> >  list_sommets;
 public:
     Polyedre_irregulier();
     Polyedre_irregulier(const Polyedre_irregulier& p);

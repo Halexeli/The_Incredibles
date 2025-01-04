@@ -4,21 +4,21 @@
 
 class Point{
     protected:
-        int x;
-        int y;
+        float *x;
+        float *y;
     public:
-        Point():x(0),y(0){};
-        Point(int x, int y):x(x),y(y){};
-        Point(const Point& p):x(p.x),y(p.y){};
-        ~Point(){};
+        Point();
+        Point(float _x, float _y);
+        Point(const Point& p);
+        ~Point();
 
         void afficher();
     
-        int getX() const;
-        int getY() const;
+        float getX() const;
+        float getY() const;
 
-        void setX(int x);
-        void setY(int y);
+        void setX(float _x);
+        void setY(float _y);
 
         
         void operator=(const Point& p);
