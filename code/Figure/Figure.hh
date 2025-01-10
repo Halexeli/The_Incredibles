@@ -16,5 +16,5 @@ public:
     void setCentre(const Point& p) { centre = p; }
     void setFillColor(sf::Color color) { _color = color; }
     virtual void afficher(Screen& window) = 0;
-    virtual bool contientPoint(const Point& point) const = 0;
+    virtual bool const contientPoint(const Point& point) = 0;
 };

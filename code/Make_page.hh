@@ -8,3 +8,4 @@
 Page *Page1();
 Page *Page2();
 Page *Page3();
+void del_page1(Page *page);

@@ -19,7 +19,7 @@ public:
     // Méthodes spécifiques au cercle
     double diametre() const;
     double circonference() const;
-    bool contientPoint(const Point& p) const;
+    bool const contientPoint(const Point& p) override;
 
 
     // Méthode d'affichage

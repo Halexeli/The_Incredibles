@@ -22,7 +22,7 @@ double Cercle::circonference() const {
     return 2 * M_PI * a; // Circonférence = 2πr
 }
 
-bool Cercle::contientPoint(const Point& p) const {
+bool const Cercle::contientPoint(const Point& p) {
     double dx = p.getX() - centre.getX();
     double dy = p.getY() - centre.getY();
     return (dx * dx + dy * dy) <= (a * a); // Distance au centre <= rayon²

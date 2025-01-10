@@ -27,6 +27,6 @@ void Ellipse_virtuelle::ajusterDansFenetre(int largeurFenetre, int hauteurFenetr
 }
 
 
-void Ellipse_virtuelle::afficherInfos() const {
+void const Ellipse_virtuelle::afficherInfos() {
     //faut ajouter ça
 }

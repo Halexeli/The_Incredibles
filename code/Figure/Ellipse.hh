@@ -23,6 +23,6 @@ public:
     void redimensionner(double facteur) override;
     void pivoter(double angleSupplementaire);
     void afficher(Screen& window) override;
-    bool contientPoint(const Point& point) const override;
-    void afficherInfos() const override;
+    bool const contientPoint(const Point& point) override;
+    void const afficherInfos() override;
 };

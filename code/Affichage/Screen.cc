@@ -153,7 +153,7 @@ void Screen::circle(float x, float y, float radius, uint32_t color){
     _win->draw(circle);
 }
 
-void Screen::point(Point p,uint32_t color = 0x00000000){
+void Screen::point(Point p,uint32_t color){
   sf::CircleShape aff_point;
   aff_point.setRadius(0.5); // Rayon
   aff_point.setFillColor(sf::Color(color)); // transparent

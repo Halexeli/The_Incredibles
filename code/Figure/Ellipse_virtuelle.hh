@@ -15,7 +15,7 @@ public:
     double get_a() const { return a; }
     void set_a(const double a) { this->a = a; }
     void translater(double dx, double dy);
-    virtual void afficherInfos() const;
+    virtual void const afficherInfos();
     virtual void afficher(Screen& window) = 0;
     virtual void redimensionner(double facteur) = 0;
     void ajusterDansFenetre(int largeurFenetre, int hauteurFenetre);

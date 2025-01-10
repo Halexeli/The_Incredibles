@@ -11,7 +11,7 @@ Page *Page1(){
     *page += NouvelleFigure;
     std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,50);
-    std::stack<std::vector<std::pair<double, double> > > list_sommets;
+    std::vector<Point > list_sommets;
     //list_sommets.push_back();
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(*P1,4,list_sommets);
     Fond.push_back(Forme1);
@@ -80,8 +80,8 @@ Page *Page2(){
     std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,135);
     Point *P2=new Point(240,405);
-    std::stack<std::vector<std::pair<double, double> > > list_sommets1;
-    std::stack<std::vector<std::pair<double, double> > > list_sommets2;
+    std::vector<Point > list_sommets1;
+    std::vector<Point> list_sommets2;
     //list_sommets1.push_back();
     //list_sommets2.push_back();
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(*P1,4,list_sommets1);
@@ -123,8 +123,8 @@ Page *Page3(){
     std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,135);
     Point *P2=new Point(240,405);
-    std::stack<std::vector<std::pair<double, double> > > list_sommets1;
-    std::stack<std::vector<std::pair<double, double> > > list_sommets2;
+    std::vector<Point > list_sommets1;
+    std::vector<Point > list_sommets2;
     //list_sommets1.push_back();
     //list_sommets2.push_back();
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(*P1,4,list_sommets1);

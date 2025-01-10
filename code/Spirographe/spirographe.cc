@@ -14,10 +14,10 @@ Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_
 //x = (R - r) * cos(t) + l * r * cos((R - r) * t / r)
 //y = (R - r) * sin(t) - l * r * sin((R - r) * t / r) 
 
-sf::Vector2f Spirographe::genererCrayonPosition(float time) const {
+sf::Vector2f const Spirographe::genererCrayonPosition(float time) {
     //ici on génère la position d'un crayon en fct du temps
-    float centreX = m_outerCircle.getCentre().getX();
-    float centreY = m_outerCircle.getCentre().getY();
+    float centreX = m_outerCircle.getCentre()->getX();
+    float centreY = m_outerCircle.getCentre()->getY();
     float CrayonX = (m_R - m_r) * cos(time) + m_l * m_r * cos((m_R - m_r) * time / m_r);
     float CrayonY = (m_R - m_r) * sin(time) - m_l * m_r * sin((m_R - m_r) * time / m_r);
     return sf::Vector2f(centreX + CrayonX, centreY + CrayonY);
@@ -47,8 +47,8 @@ void Spirographe::update(float deltaTime) {
     }
 
     m_lastCrayonPosition = newCrayonPosition;
-    float centerX = m_outerCircle.getCentre().getX();
-    float centerY = m_outerCircle.getCentre().getY();
+    float centerX = m_outerCircle.getCentre()->getX();
+    float centerY = m_outerCircle.getCentre()->getY();
     float innerX = (m_R - m_r) * cos(m_time);
     float innerY = (m_R - m_r) * sin(m_time);
     m_innerCircle = Cercle(Point(centerX + innerX, centerY + innerY), m_r);
@@ -69,7 +69,7 @@ void Spirographe::reset() {
     m_time = 0.0f;
     m_SpirographePoints.clear();
     m_lastCrayonPosition = genererCrayonPosition(m_time);
-    m_innerCircle = Cercle(Point(m_outerCircle.getCentre().getX() + m_R - m_r, m_outerCircle.getCentre().getY()), m_r);
+    m_innerCircle = Cercle(Point(m_outerCircle.getCentre()->getX() + m_R - m_r, m_outerCircle.getCentre()->getY()), m_r);
     m_Crayon.setCentre(Point(m_lastCrayonPosition.x, m_lastCrayonPosition.y));
     m_color = sf::Color::Green;
     m_l = initCrayon;
