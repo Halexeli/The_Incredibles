@@ -1,6 +1,7 @@
 #include "Polyedre.hh"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <math.h>
 #include <numeric> //ceci est pour gcd
 //gcd calcule le pgcd
 //je l'utilise pour calculer le nombre de tours que je dois faire pour que le cercle roulant fasse un tour complet

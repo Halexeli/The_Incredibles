@@ -1,3 +1,4 @@
+#modifier ceci pour Mac
 CXX = g++
 CXXFLAGS = -std=c++17 -stdlib=libc++
 #modifier ceci pour linux
