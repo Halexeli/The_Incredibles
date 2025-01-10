@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+/* #include <SFML/Graphics.hpp>
 #include "Affichage/Page.hh"  
 #include "Affichage/Screen.hh"
 #include "Spirographe/Spirographe.hh"
@@ -114,3 +114,4 @@ int main() {
     return 0;
 }
 
+*/
