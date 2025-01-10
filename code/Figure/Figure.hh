@@ -12,7 +12,7 @@ public:
     Figure(const Point& p) : centre(p) {}
     virtual ~Figure() {}
     
-    Point getCentre() const { return centre; }
+    const Point * getCentre() { return &centre; }
     void setCentre(const Point& p) { centre = p; }
     void setFillColor(sf::Color color) { _color = color; }
     virtual void afficher(Screen& window) = 0;

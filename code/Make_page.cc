@@ -26,8 +26,9 @@ void del_page1(Page *page){
     } 
     std::vector <Polyedre_irregulier *> Fond=page->get_Fond();
     for(auto it:Fond){
+        delete it->getCentre();
         delete it;
-    } 
+    }
     
 }
 

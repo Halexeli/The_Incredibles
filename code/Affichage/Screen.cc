@@ -152,3 +152,12 @@ void Screen::circle(float x, float y, float radius, uint32_t color){
     circle.setPosition(x-radius, y-radius); // Centré
     _win->draw(circle);
 }
+
+void Screen::point(Point p,uint32_t color = 0x00000000){
+  sf::CircleShape aff_point;
+  aff_point.setRadius(0.5); // Rayon
+  aff_point.setFillColor(sf::Color(color)); // transparent
+  aff_point.setOutlineThickness(1);
+  aff_point.setPosition(p.getX()-0.5, p.getY()-0.5); // Centré
+  _win->draw(aff_point);
+}

@@ -108,6 +108,9 @@ class Screen: public sf::RenderWindow {
   void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../../Assets/Times_New_Roman/times_new_roman.ttf");
   //Permet d'afficher un texte
 
+  void point(Point p,uint32_t color = 0x00000000);
+  //affiche un point
+
   uint16_t w() const {return _w;}
   uint16_t h() const {return _h;}
   bool Buttonclicked(float x, float y, float w, float h);

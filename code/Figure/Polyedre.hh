@@ -1,7 +1,7 @@
 #pragma once
+#include "Point.hh"
 #include "Figure.hh"
 #include <iostream>
-#include <stack>
 #include <vector>
 #include <utility>
 #include <SFML/Graphics.hpp>
@@ -16,7 +16,7 @@ public:
     Polyedre_virtuel(const Point& p, int sommets);
     virtual ~Polyedre_virtuel();
     virtual void afficher(Screen& window) = 0;
-    virtual bool contientPoint(const Point& point) const = 0;
+    virtual bool const contientPoint(const Point& point) = 0;
 };
 
 class Polyedre_regulier : public Polyedre_virtuel {
@@ -29,17 +29,17 @@ public:
     Polyedre_regulier(const Point& p, int sommets, double cote, double angle);
     ~Polyedre_regulier();
     void afficher(Screen& window) override;
-    bool contientPoint(const Point& point) const override;
+    bool const contientPoint(const Point& point) override;
 };
 
 class Polyedre_irregulier : public Polyedre_virtuel {
 private:
-    std::vector<std::pair<double, double> >  list_sommets;
+    std::vector<Point>  list_sommets;
 public:
     Polyedre_irregulier();
     Polyedre_irregulier(const Polyedre_irregulier& p);
-    Polyedre_irregulier(const Point& p, int sommets, std::stack<std::vector<std::pair<double, double> > > list_sommets);
+    Polyedre_irregulier(const Point& p, int sommets, std::vector<Point>  list_sommets);
     ~Polyedre_irregulier();
     void afficher(Screen& window) override;
-    bool contientPoint(const Point& point) const override;
+    bool const contientPoint(const Point& point) override;
 };
