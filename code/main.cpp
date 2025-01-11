@@ -11,10 +11,12 @@
 int main() {
     Screen screen(960, 540); 
     //Page d'accueil
-    Page *page;
+    Page *page1,*page2,*page3;
     
     //spiro
-    page=Page3();
+    page1=Page1();
+    page2=Page2();
+    page3=Page3();
     while(screen.isOpen()){
         sf::Event event;
         while (screen.pollEvent(event)) {
@@ -22,10 +24,12 @@ int main() {
                 screen.close();
             }
         }
-        page->draw(screen);
+        page1->draw(screen);
         screen.render();
     }
-    del_page(page);
+    del_page(page1);
+    del_page(page2);
+    del_page(page3);
     return 0;
 }
 

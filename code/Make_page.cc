@@ -110,40 +110,58 @@ Page *Page2(){
 void del_page(Page *page){
     std::vector<Polyedre_irregulier *> Formes_irr=page->get_Formes_irr();
     for(auto it:Formes_irr){
-        std::vector <Point *> sommets=it->getList();
-        for(auto it2:sommets){
-            delete it2;
-        }
-        delete it->getCentre();
-        delete it;
-    } 
+        if(it!=nullptr){
+            std::vector <Point *> sommets=it->getList();
+            for(auto it2:sommets){
+                if(it2!=nullptr)
+                    delete it2;
+            }
+            const Point *centre=it->getCentre();
+            if(centre!=nullptr)
+                delete centre;
+            delete it;
+        } 
+    }
     std::vector<Polyedre_regulier *> Formes_r=page->get_Formes_r();
     for(auto it:Formes_r){
-        delete it->getCentre();
-        delete it;
-    } 
+        if(it!=nullptr){
+            const Point *centre=it->getCentre();
+            if(centre!=nullptr)
+                delete centre;
+            delete it;
+        } 
+    }
     std::vector <Spirographe *> Spiro=page->get_Spiro();
     for(auto it:Spiro){
-        delete it;
+        if(it!=nullptr)
+            delete it;
     } 
     std::vector <Bouton *> Bouton=page->get_List_Bouton();
     for(auto it:Bouton){
-        delete it;
+        if(it!=nullptr)
+            delete it;
     } 
     std::vector <Polyedre_irregulier *> Fond=page->get_Fond();
     for(auto it:Fond){
-        std::vector <Point *> sommets=it->getList();
-        for(auto it2:sommets){
-            delete it2;
+        if(it!=nullptr){
+            std::vector <Point *> sommets=it->getList();
+            for(auto it2:sommets){
+                if(it2!=nullptr)
+                    delete it2;
+            }
+            const Point *centre=it->getCentre();
+            if(centre!=nullptr)
+                delete centre;
+            delete it;
         }
-        delete it->getCentre();
-        delete it;
     }
     std::vector <Texte *> Texte=page->get_List_string();
     for(auto it:Texte){
-        delete it;
+        if(it!=nullptr)
+            delete it;
     }
-    delete page;
+    if(page!=nullptr)
+        delete page;
 }
 
 Page *Page3(){

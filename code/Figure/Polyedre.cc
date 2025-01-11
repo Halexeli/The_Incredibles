@@ -79,7 +79,7 @@ Polyedre_irregulier::~Polyedre_irregulier() {}
 
 void Polyedre_irregulier::afficher(Screen& window) {
     const Point * centre=getCentre();
-    window.Figure_irregular(centre->getX(),centre->getY(),list_sommets.size(),list_sommets);
+    window.Figure_irregular(centre->getX(),centre->getY(),sommets,list_sommets);
 }
 //particularité des polygones irrégulier:  ils peuvent être concaves i.e les angles peuvent être > 180°
 //du coup les sommets sont pas espacés de manière régulière
