@@ -8,13 +8,13 @@
 //virtuel
 Polyedre_virtuel::Polyedre_virtuel() : Figure(), sommets(0) {}
 Polyedre_virtuel::Polyedre_virtuel(const Polyedre_virtuel& p) : Figure(p), sommets(p.sommets) {}
-Polyedre_virtuel::Polyedre_virtuel(const Point& p, int sommets) : Figure(p), sommets(sommets) {}
+Polyedre_virtuel::Polyedre_virtuel(Point *const p, int sommets) : Figure(p), sommets(sommets) {}
 Polyedre_virtuel::~Polyedre_virtuel() {}
 
 //regulier
 Polyedre_regulier::Polyedre_regulier() : Polyedre_virtuel(), cote(0.0), angle(0.0) {}
 Polyedre_regulier::Polyedre_regulier(const Polyedre_regulier& p) : Polyedre_virtuel(p), cote(p.cote), angle(p.angle) {}
-Polyedre_regulier::Polyedre_regulier(const Point& p, int sommets, double cote, double angle) : Polyedre_virtuel(p, sommets), cote(cote), angle(angle) {}
+Polyedre_regulier::Polyedre_regulier(Point * const p, int sommets, double cote, double angle) : Polyedre_virtuel(p, sommets), cote(cote), angle(angle) {}
 Polyedre_regulier::~Polyedre_regulier() {}
 //affiche un polygone régulier
 void Polyedre_regulier::afficher(Screen& window) {
@@ -73,7 +73,7 @@ bool const Polyedre_regulier::contientPoint(const Point& point) {
 //irregulier 
 Polyedre_irregulier::Polyedre_irregulier() : Polyedre_virtuel() {}
 Polyedre_irregulier::Polyedre_irregulier(const Polyedre_irregulier& p) : Polyedre_virtuel(p), list_sommets(p.list_sommets) {}
-Polyedre_irregulier::Polyedre_irregulier(const Point& p, int sommets, std::vector<Point> list_sommets) : Polyedre_virtuel(p, sommets), list_sommets(list_sommets) {}
+Polyedre_irregulier::Polyedre_irregulier(Point *const p, int sommets, std::vector<Point *> list_sommets) : Polyedre_virtuel(p, sommets), list_sommets(list_sommets) {}
 Polyedre_irregulier::~Polyedre_irregulier() {}
 
 
@@ -88,13 +88,13 @@ bool const Polyedre_irregulier::contientPoint(const Point& point) {
     
     int count = 0;
     //on applique l'algorithme raycasting
-    std::vector<Point>::iterator temp,it;
+    std::vector<Point *>::iterator temp,it;
     for (it=list_sommets.begin();it!=list_sommets.end();it++) {
         if(it!=list_sommets.begin()){
-            float x1=temp->getX();
-            float y1=temp->getY();
-            float x2=it->getX();
-            float y2=it->getY();
+            float x1=(*temp)->getX();
+            float y1=(*temp)->getY();
+            float x2=(*it)->getX();
+            float y2=(*it)->getY();
             if (((y1 > point.getY()) != (y2 > point.getY())) &&
                 (point.getX() < (x2 - x1) * (point.getY() - y1) / (y2 - y1) + x1)) {
                 count++;
@@ -102,10 +102,10 @@ bool const Polyedre_irregulier::contientPoint(const Point& point) {
         }
         temp=it;
     }
-    float x1=list_sommets.begin()->getX();
-    float y1=list_sommets.begin()->getY();
-    float x2=temp->getX();
-    float y2=temp->getY();
+    float x1=(*list_sommets.begin())->getX();
+    float y1=(*list_sommets.begin())->getY();
+    float x2=(*temp)->getX();
+    float y2=(*temp)->getY();
     if (((y1 > point.getY()) != (y2 > point.getY())) &&
         (point.getX() < (x2 - x1) * (point.getY() - y1) / (y2 - y1) + x1)) {
         count++;

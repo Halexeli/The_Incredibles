@@ -10,7 +10,7 @@ protected:
 public:
     Ellipse_virtuelle();
     Ellipse_virtuelle(const Ellipse_virtuelle& p);
-    Ellipse_virtuelle(const Point& p, const double a);
+    Ellipse_virtuelle(Point *const p, const double a);
     // getters et setters 
     double get_a() const { return a; }
     void set_a(const double a) { this->a = a; }

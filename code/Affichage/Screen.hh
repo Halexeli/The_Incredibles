@@ -86,7 +86,7 @@ class Screen: public sf::RenderWindow {
     @param size taille des segments du centre de la figure 
     @param color 0xRRGGBBAA (default: light blue)
   */
-  void Figure_irregular(float x, float y,int sommet, std::vector <Point> point,uint32_t color= 0xAEFBFFFF);
+  void Figure_irregular(float x, float y,int sommet, std::vector <Point *> point,uint32_t color= 0xAEFBFFFF);
    /**   draw a irregular figure convex
     @param x x-coordinate of the center (in pixels)
     @param y y-coordinate of the center (in pixels)

@@ -10,20 +10,20 @@ Ellipse_virtuelle::Ellipse_virtuelle(const Ellipse_virtuelle &p) : Figure(p) {
     a = p.a;
 }
 
-Ellipse_virtuelle::Ellipse_virtuelle(const Point& p, const double _a) : Figure(p) {
+Ellipse_virtuelle::Ellipse_virtuelle(Point *const p, const double _a) : Figure(p) {
     a = _a;
 }
 
 // méthode de translation 
 void Ellipse_virtuelle::translater(double dx, double dy) {
-    centre.setX(centre.getX() + dx);
-    centre.setY(centre.getY() + dy);
+    centre->setX(centre->getX() + dx);
+    centre->setY(centre->getY() + dy);
 }
 
 // ajuster la forme dans une fenêtre donnée 
 void Ellipse_virtuelle::ajusterDansFenetre(int largeurFenetre, int hauteurFenetre) {
-    if (centre.getX() + a > largeurFenetre) centre.setX(largeurFenetre - a);
-    if (centre.getY() + a > hauteurFenetre) centre.setY(hauteurFenetre - a);
+    if (centre->getX() + a > largeurFenetre) centre->setX(largeurFenetre - a);
+    if (centre->getY() + a > hauteurFenetre) centre->setY(hauteurFenetre - a);
 }
 
 

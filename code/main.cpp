@@ -7,14 +7,25 @@
 
 
 
+
 int main() {
     Screen screen(960, 540); 
     //Page d'accueil
-    Page *page1;
+    Page *page;
+    
     //spiro
-    page1=Page1();
-    page1->draw(screen);
-    screen.render();
+    page=Page3();
+    while(screen.isOpen()){
+        sf::Event event;
+        while (screen.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                screen.close();
+            }
+        }
+        page->draw(screen);
+        screen.render();
+    }
+    del_page(page);
     return 0;
 }
 

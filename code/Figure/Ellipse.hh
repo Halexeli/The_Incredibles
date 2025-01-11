@@ -10,7 +10,7 @@ private:
 public:
     Ellipse();
     Ellipse(const Ellipse& p);
-    Ellipse(const Point& p, const double a, const double b, const double angle);
+    Ellipse(Point * const p, const double a, const double b, const double angle);
 
     double getB() const;
     void setB(double _b);

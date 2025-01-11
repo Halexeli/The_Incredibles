@@ -13,7 +13,7 @@ LDFLAGS = -L/usr/lib
 #INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I./Figure -I./Spirographe -I./Affichage
 #LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
-SOURCES = main.cpp ./Figure/*.cc ./Spirographe/*.cc ./Affichage/*.cc
+SOURCES = main.cpp Make_page.cc ./Figure/*.cc ./Spirographe/*.cc ./Affichage/*.cc
 TARGET = spirograph
 
 #source files

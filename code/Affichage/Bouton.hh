@@ -17,14 +17,14 @@ class Bouton{
     sf::Font font;
     sf::Text text;
     public:
-    Bouton() : x(0), y(0), w(2), h(1), font_file("../../Assets/Times_New_Roman/times_new_roman.ttf") {
+    Bouton() : x(0), y(0), w(2), h(1), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Fail load font: " << font_file << std::endl;
         }
         text.setFont(font);
     }
     //ajout constructeur pour bouton avec texte
-    Bouton(float _x, float _y, float _w, float _h, const std::string& _label) : x(_x), y(_y), w(_w), h(_h), label(_label), font_file("../../Assets/Times_New_Roman/times_new_roman.ttf") {
+    Bouton(float _x, float _y, float _w, float _h, const std::string& _label) : x(_x), y(_y), w(_w), h(_h), label(_label), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Failed to load font: " << font_file << std::endl;
         }
@@ -37,7 +37,7 @@ class Bouton{
         text.setPosition(x + w / 2.0f, y + h / 2.0f);
     }
 
-    Bouton(const Bouton &p) : x(p.x), y(p.y), w(p.w), h(p.h), label(p.label), font_file("../") {
+    Bouton(const Bouton &p) : x(p.x), y(p.y), w(p.w), h(p.h), label(p.label), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Fail load font: " << font_file << std::endl;
         }
@@ -61,14 +61,14 @@ class Texte{
         sf::Text text;
     public:
 
-        Texte() : x(0), y(0), taille(12), font_file("../../Assets/Times_New_Roman/times_new_roman.ttf"), color(0xFF0000FF), texte("pas de texte encore") {
+        Texte() : x(0), y(0), taille(12), font_file("../Assets/Times_New_Roman/times_new_roman.ttf"), color(0x1A1A77FF), texte("pas de texte encore") {
             if (!font.loadFromFile(font_file)) {
                 std::cerr << "Failed to load font: " << font_file << std::endl;
             }
             text.setFont(font);
         }
 
-        Texte(float _x, float _y, int _taille = 12, uint32_t _color = 0xFF0000FF, std::string _texte = "pas de texte encore", std::string _front = "../../Assets/Times_New_Roman/times_new_roman.ttf")
+        Texte(float _x, float _y, int _taille = 12, uint32_t _color = 0x1A1A77FF, std::string _texte = "pas de texte encore", std::string _front = "../Assets/Times_New_Roman/times_new_roman.ttf")
             : x(_x), y(_y), taille(_taille), font_file(_front), color(_color), texte(_texte) {
             if (!font.loadFromFile(font_file)) {
                 std::cerr << "Failed to load font: " << font_file << std::endl;

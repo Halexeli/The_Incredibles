@@ -6,7 +6,7 @@ Ellipse::Ellipse() : Ellipse_virtuelle(), b(0), angle(0) {}
 
 Ellipse::Ellipse(const Ellipse& p) : Ellipse_virtuelle(p), b(p.b), angle(p.angle) {}
 
-Ellipse::Ellipse(const Point& p, const double a, const double b, const double angle)
+Ellipse::Ellipse( Point* const p, const double a, const double b, const double angle)
     : Ellipse_virtuelle(p, a), b(b), angle(angle) {}
 
 

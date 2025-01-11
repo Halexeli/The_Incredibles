@@ -39,6 +39,11 @@ private:
     //crayon
     Cercle m_Crayon;
 
+    //Point necessaire
+    Point Oc;
+    Point Ic;
+    Point Cr;
+
     //colors:
     sf::Color m_color;
 };

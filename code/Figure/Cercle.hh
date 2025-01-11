@@ -11,7 +11,7 @@ public:
     // Constructeurs
     Cercle();
     Cercle(const Cercle& c);
-    Cercle(const Point& centre, const double rayon);
+    Cercle(Point * const centre, const double rayon);
 
     // Destructeur
     ~Cercle();

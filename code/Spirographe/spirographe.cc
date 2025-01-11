@@ -2,7 +2,7 @@
 #include <cmath>
 
 //nb: mtime est le temps écoulé
-Spirographe::Spirographe(float R, float r, float l) : m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(Point(400, 300), R), m_innerCircle(Point(400 + (R - r), 300), r), m_Crayon(Point(0, 0), 2),m_color(sf::Color::Green)
+Spirographe::Spirographe(float R, float r, float l) : Oc(Point(400, 300)),Ic(Point(400 + (R - r), 300)),Cr(Point(0, 0)), m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, R), m_innerCircle(&Ic, r), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
 {       //last position du crayon initialisée à la position du crayon au temps 0
         m_lastCrayonPosition = genererCrayonPosition(m_time);
         //couleur du crayon
@@ -51,7 +51,8 @@ void Spirographe::update(float deltaTime) {
     float centerY = m_outerCircle.getCentre()->getY();
     float innerX = (m_R - m_r) * cos(m_time);
     float innerY = (m_R - m_r) * sin(m_time);
-    m_innerCircle = Cercle(Point(centerX + innerX, centerY + innerY), m_r);
+    Ic=Point(centerX + innerX, centerY + innerY);
+    m_innerCircle = Cercle(&Ic, m_r);
     
 
     m_Crayon.setCentre(Point(newCrayonPosition.x, newCrayonPosition.y));
@@ -69,7 +70,8 @@ void Spirographe::reset() {
     m_time = 0.0f;
     m_SpirographePoints.clear();
     m_lastCrayonPosition = genererCrayonPosition(m_time);
-    m_innerCircle = Cercle(Point(m_outerCircle.getCentre()->getX() + m_R - m_r, m_outerCircle.getCentre()->getY()), m_r);
+    Ic=Point(m_outerCircle.getCentre()->getX() + m_R - m_r, m_outerCircle.getCentre()->getY());
+    m_innerCircle = Cercle(&Ic, m_r);
     m_Crayon.setCentre(Point(m_lastCrayonPosition.x, m_lastCrayonPosition.y));
     m_color = sf::Color::Green;
     m_l = initCrayon;
