@@ -9,6 +9,7 @@ Page *Page1(){
     //boutons
     Bouton *NouvelleFigure = new Bouton(15, 15, 120, 30, "Nouvelle Figure");
     *page += NouvelleFigure;
+
     std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,50);
     Point *P2=new Point(-480,-50);
@@ -107,63 +108,6 @@ Page *Page2(){
     return(page);
 }
 
-void del_page(Page *page){
-    std::vector<Polyedre_irregulier *> Formes_irr=page->get_Formes_irr();
-    for(auto it:Formes_irr){
-        if(it!=nullptr){
-            std::vector <Point *> sommets=it->getList();
-            for(auto it2:sommets){
-                if(it2!=nullptr)
-                    delete it2;
-            }
-            const Point *centre=it->getCentre();
-            if(centre!=nullptr)
-                delete centre;
-            delete it;
-        } 
-    }
-    std::vector<Polyedre_regulier *> Formes_r=page->get_Formes_r();
-    for(auto it:Formes_r){
-        if(it!=nullptr){
-            const Point *centre=it->getCentre();
-            if(centre!=nullptr)
-                delete centre;
-            delete it;
-        } 
-    }
-    std::vector <Spirographe *> Spiro=page->get_Spiro();
-    for(auto it:Spiro){
-        if(it!=nullptr)
-            delete it;
-    } 
-    std::vector <Bouton *> Bouton=page->get_List_Bouton();
-    for(auto it:Bouton){
-        if(it!=nullptr)
-            delete it;
-    } 
-    std::vector <Polyedre_irregulier *> Fond=page->get_Fond();
-    for(auto it:Fond){
-        if(it!=nullptr){
-            std::vector <Point *> sommets=it->getList();
-            for(auto it2:sommets){
-                if(it2!=nullptr)
-                    delete it2;
-            }
-            const Point *centre=it->getCentre();
-            if(centre!=nullptr)
-                delete centre;
-            delete it;
-        }
-    }
-    std::vector <Texte *> Texte=page->get_List_string();
-    for(auto it:Texte){
-        if(it!=nullptr)
-            delete it;
-    }
-    if(page!=nullptr)
-        delete page;
-}
-
 Page *Page3(){
     Page *page= new Page();
     //boutons
@@ -250,3 +194,31 @@ Page *Page3(){
     return(page);
 }
 
+void del_page(Page *page){
+    std::vector <Polyedre_irregulier *> Fond=page->get_Fond();
+    for(auto it:Fond){
+        if(it!=nullptr){
+            std::vector <Point *> sommets=it->getList();
+            for(auto it2:sommets){
+                if(it2!=nullptr)
+                    delete it2;
+            }
+            const Point *centre=it->getCentre();
+            if(centre!=nullptr)
+                delete centre;
+            delete it;
+        }
+    }
+    std::vector <Texte *> Texte=page->get_List_string();
+    for(auto it:Texte){
+        if(it!=nullptr)
+            delete it;
+    }
+   int i=0;
+    std::vector <Bouton *> Bouton=page->get_List_Bouton();
+    for(auto it:Bouton){
+        delete it;
+        i++;
+    } 
+    delete page;
+}

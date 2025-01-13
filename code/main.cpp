@@ -4,6 +4,7 @@
 #include "Spirographe/Spirographe.hh"
 #include "Affichage/Bouton.hh"
 #include "Make_page.hh"
+#include "Inter_page.hh"
 
 
 
@@ -11,31 +12,43 @@
 int main() {
     Screen screen(960, 540); 
     //Page d'accueil
-    Page *page1,*page2,*page3;
-    
+    Page *page1,*page2,*page3,*current;
+    std::vector<Spirographe*> spirographes;
+    sf::Clock clock;
+    float speed = 0.5f;
     //spiro
     page1=Page1();
     page2=Page2();
     page3=Page3();
+    current=page1;
+
     while(screen.isOpen()){
         sf::Event event;
         while (screen.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
+                del_page(page1);
+                del_page(page2);
+                del_page(page3);
                 screen.close();
             }
         }
-        page1->draw(screen);
+        /*
+        inter(current,page1,page2,page3,&spirographes);
+        float deltaTime = clock.restart().asSeconds() * speed;
+        for(auto it:spirographes){
+            it->update(deltaTime);
+        }*/
+        current->draw(screen);
         screen.render();
     }
-    del_page(page1);
-    del_page(page2);
-    del_page(page3);
     return 0;
 }
 
 /*
-    sf::Clock clock;
-    float speed = 0.5f;
+    printf("page1 : %d\n",page1->get_id());
+    printf("page2 : %d\n",page2->get_id());
+    printf("page3 : %d\n",page3->get_id());
+
     //green pour bien commencer
     sf::Color currentCol= sf::Color::Green;
     //current size crayon
@@ -93,9 +106,6 @@ int main() {
             spirographe->setCrayonSize(spirographe->getCrayonSize() - 0.001);
         }
 
-        float deltaTime = clock.restart().asSeconds() * speed;
-        spirographe->update(deltaTime);
-        page.draw(screen);
-        screen.render();
+        
     }
 */

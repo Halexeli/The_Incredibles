@@ -3,12 +3,6 @@
 int Page::it=0;
 
 void Page::draw(Screen &screen) {
-    for (auto it : Formes_r) {
-        it->afficher(screen);
-    }
-    for (auto it : Spiro) {
-        it->draw(screen);
-    }
     for(auto it : Fond) {
         it->afficher(screen);
     }

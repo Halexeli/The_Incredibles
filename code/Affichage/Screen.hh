@@ -17,7 +17,7 @@
 class Screen: public sf::RenderWindow {
  public:
   Screen(uint16_t h, uint16_t w) : sf::RenderWindow(sf::VideoMode(h, w), "Incredible Spirographe"), _win(this){};
-  ~Screen(){delete _win;};
+  ~Screen(){/*delete _win;*/};
   bool isOpen(){return _win->isOpen();}
   void close(){_win->close();}
   bool pollEvent(sf::Event& event){return _win->pollEvent(event);}
