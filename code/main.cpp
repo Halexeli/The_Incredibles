@@ -12,6 +12,7 @@
 int main() {
     Screen screen(960, 540); 
     //Page d'accueil
+    /*
     Page *page1,*page2,*page3,*current;
     std::vector<Spirographe*> spirographes;
     sf::Clock clock;
@@ -21,24 +22,28 @@ int main() {
     page2=Page2();
     page3=Page3();
     current=page1;
-
+    */
     while(screen.isOpen()){
         sf::Event event;
         while (screen.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
+                /*
                 del_page(page1);
                 del_page(page2);
                 del_page(page3);
+                */
                 screen.close();
             }
         }
         /*
-        inter(current,page1,page2,page3,&spirographes);
+        inter(current,page1,page2,page3,spirographes,screen);
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
             it->update(deltaTime);
-        }*/
-        current->draw(screen);
+            it->draw(screen);
+        }
+        page1->draw(screen);
+        */
         screen.render();
     }
     return 0;

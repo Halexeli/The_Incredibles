@@ -1,8 +1,8 @@
-#CXX = g++
-#CXXFLAGS = -std=c++17 #-stdlib=libc++
+CXX = g++
+CXXFLAGS = -std=c++17 #-stdlib=libc++
 #modifier ceci pour linux
-INCLUDES = -I/usr/include -I./Figure -I./Spirographe
-LDFLAGS = -L/usr/lib
+#INCLUDES = -I/usr/include -I./Figure -I./Spirographe
+#LDFLAGS = -L/usr/lib
 
 #pour windows: 
 #changer path/to/sfml par le chemin d'installation de sfml sur ton ordinateur

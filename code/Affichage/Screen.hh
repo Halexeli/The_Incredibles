@@ -105,7 +105,7 @@ class Screen: public sf::RenderWindow {
     @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
     @param color default : blue
   */
-  void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../../Assets/Times_New_Roman/times_new_roman.ttf");
+  void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../Assets/Times_New_Roman/times_new_roman.ttf");
   //Permet d'afficher un texte
 
   void point(Point p,uint32_t color = 0x00000000);

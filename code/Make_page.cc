@@ -10,7 +10,7 @@ Page *Page1(){
     Bouton *NouvelleFigure = new Bouton(15, 15, 120, 30, "Nouvelle Figure");
     *page += NouvelleFigure;
 
-    std::vector <Polyedre_irregulier *> Fond;
+
     Point *P1=new Point(480,50);
     Point *P2=new Point(-480,-50);
     Point *P3=new Point(-480,50);
@@ -22,8 +22,7 @@ Page *Page1(){
     list_sommets.push_back(P4);
     list_sommets.push_back(P5);
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(P1,4,list_sommets);
-    Fond.push_back(Forme1);
-    page->creer_fond(Fond);
+    *page+=Forme1;
     return(page);
 }
 
@@ -79,7 +78,6 @@ Page *Page2(){
     *page += ok;
     Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure reguliere");
     *page += TypeFigure;
-    std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,135);
     Point *p11=new Point(-480,-135);
     Point *p12=new Point(480,-135);
@@ -102,9 +100,8 @@ Page *Page2(){
     list_sommets2.push_back(p24);
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(P1,4,list_sommets1);
     Polyedre_irregulier *Forme2= new Polyedre_irregulier(P2,4,list_sommets2);
-    Fond.push_back(Forme1);
-    Fond.push_back(Forme2);
-    page->creer_fond(Fond);
+    *page+=Forme1;
+    *page+=Forme2;
     return(page);
 }
 
@@ -165,7 +162,6 @@ Page *Page3(){
     *page += ok;
     Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure irreguliere");
     *page += TypeFigure;
-    std::vector <Polyedre_irregulier *> Fond;
     Point *P1=new Point(480,135);
     Point *p11=new Point(-480,-135);
     Point *p12=new Point(480,-135);
@@ -188,9 +184,8 @@ Page *Page3(){
     list_sommets2.push_back(p24);
     Polyedre_irregulier *Forme1= new Polyedre_irregulier(P1,4,list_sommets1);
     Polyedre_irregulier *Forme2= new Polyedre_irregulier(P2,4,list_sommets2);
-    Fond.push_back(Forme1);
-    Fond.push_back(Forme2);
-    page->creer_fond(Fond);
+    *page+=Forme1;
+    *page+=Forme2;
     return(page);
 }
 

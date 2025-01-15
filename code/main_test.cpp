@@ -12,7 +12,6 @@ int main() {
     Page page;
     //spiro
     Spirographe *spirographe = new Spirographe(200.f, 30.f, 0.3f); 
-    page += spirographe;
     //boutons
     Bouton *plusBouton = new Bouton(50, 50, 50, 50, "+");
     page += plusBouton;
@@ -98,6 +97,7 @@ int main() {
 
         float deltaTime = clock.restart().asSeconds() * speed;
         spirographe->update(deltaTime);
+        spirographe->draw(screen);
         page.draw(screen);
         screen.render();
     }

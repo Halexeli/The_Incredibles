@@ -23,7 +23,7 @@ class Page{
     Page(const Page &p):id(p.id),Fond(p.Fond),List_Bouton(p.List_Bouton),List_string(p.List_string){};
     ~Page(){};
     int const get_id(){return(id);};
-    void creer_fond(std::vector <Polyedre_irregulier*> Fond);
+    void operator+=(Polyedre_irregulier* adding){Fond.push_back(adding);};
     void operator+=( Bouton * adding){List_Bouton.push_back(adding);};
     void operator+=( Texte * adding){List_string.push_back(adding);};
     void draw(Screen &screen);
@@ -32,5 +32,6 @@ class Page{
     //Les boutons nécessaires
     std::vector <Bouton*> const get_List_Bouton(){return(List_Bouton);};
     //Les textes nécessaires
+    Bouton * const get_Bouton(int i){printf("Dans get_bouton\n");return(List_Bouton[i]);};
     std::vector <Texte*> const get_List_string(){return(List_string);};
 };
