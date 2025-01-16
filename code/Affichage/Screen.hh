@@ -18,9 +18,9 @@ class Screen: public sf::RenderWindow {
  public:
   Screen(uint16_t h, uint16_t w) : sf::RenderWindow(sf::VideoMode(h, w), "Incredible Spirographe"), _win(this){};
   ~Screen(){/*delete _win;*/};
-  bool isOpen(){return _win->isOpen();}
-  void close(){_win->close();}
-  bool pollEvent(sf::Event& event){return _win->pollEvent(event);}
+  //bool isOpen(){return _win->isOpen();}
+  //void close(){_win->close();}
+  //bool pollEvent(sf::Event& event){return _win->pollEvent(event);}
   void render();
   void rect(float x, float y, float w, float h, uint32_t color = 0xFF0000FF);
   /** draw a filled rectangle
