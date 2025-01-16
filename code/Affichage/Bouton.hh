@@ -44,6 +44,7 @@ class Bouton{
         text.setFont(font);
     }
     ~Bouton(){};
+    void print(){std::cout<<"Bouton "<<label<<std::endl;};
     bool Ispressed(Screen &screen);
     void draw(Screen &screen);
 };
@@ -84,4 +85,5 @@ class Texte{
         }
     ~Texte(){};
     void draw(Screen &screen);
+    void add(float x);
 };

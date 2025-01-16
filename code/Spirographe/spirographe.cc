@@ -85,3 +85,20 @@ void Spirographe::setColor(const sf::Color& color) {
         m_SpirographePoints[i].color = color;
     }
 }
+
+void Spirographe::deplacerx(float x){
+    Oc+=Point(x,0);
+    Ic+=Point(x,0);
+    Cr+=Point(x,0);
+}
+void Spirographe::deplacery(float y){
+    Oc+=Point(0,y);
+    Ic+=Point(0,y);
+    Cr+=Point(0,y);
+}
+void Spirographe::aug_taille(float r){
+    m_R+=r;
+    m_r+=r*(m_r/m_R);
+    m_outerCircle+=r;
+    m_innerCircle+=r*(m_r/m_R);
+}

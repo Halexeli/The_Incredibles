@@ -12,9 +12,14 @@ public:
     void setR(float r) { m_r = r; }
     float getR() const { return m_r; }
     void reset();
+    void clear_crayon(){m_SpirographePoints.clear();};
     void setColor(const sf::Color& color);
     void setCrayonSize(float size) { m_l = size; }
     float getCrayonSize() const { return m_l; }
+    void deplacerx(float x);
+    void deplacery(float y);
+    void aug_taille(float r);
+    void aug_crayon(float r){m_l+=r;m_Crayon+=r;};
 
 private:
     //ceci pour générer la position du crayon

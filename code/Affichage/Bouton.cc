@@ -15,3 +15,9 @@ void Bouton::draw(Screen &screen) {
 void Texte::draw(Screen &screen){
     screen.text(x,y,texte,taille,color,font_file);
 }
+
+void Texte::add(float x){
+    float nb=std::stof(texte);
+    nb+=x;
+    texte=std::to_string(nb);
+}

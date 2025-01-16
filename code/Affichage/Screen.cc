@@ -128,6 +128,7 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point *> 
 
 bool Screen::Buttonclicked(float x, float y, float w, float h) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_win);
+    //printf("test2\n");
     return (mousePos.x >= x && mousePos.x <= x + w && mousePos.y >= y && mousePos.y <= y + h && sf::Mouse::isButtonPressed(sf::Mouse::Left));
 }
 

@@ -21,31 +21,35 @@ int main() {
     page2=Page2();
     page3=Page3();
     current=page1;
-    int i=0;
     while(screen.isOpen()){
-        i++;
         sf::Event event;
         while (screen.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 screen.close();
             }
         }
-        /*
+        //inter(current,page1,page2,page3,spirographes,screen);
+        //printf("Test3\n");
+        
         inter(current,page1,page2,page3,spirographes,screen);
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
+            //printf("Test4\n");
             it->update(deltaTime);
             it->draw(screen);
-        }*/
+        }
+        //printf("Test5\n");
         current->draw(screen);
-
+        //printf("Test6\n");
         screen.render();
+        //printf("Test7\n");
     }
-
+    for(auto it:spirographes){
+            delete it;
+        }
     del_page(page1);
     del_page(page2);
     del_page(page3);
-
     return 0;
 }
 

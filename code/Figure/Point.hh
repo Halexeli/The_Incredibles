@@ -23,4 +23,5 @@ class Point{
         
         void operator=(const Point& p){x=p.x;y=p.y;};
         bool operator==(const Point& p);
+        void operator+=(const Point& p){x=x+p.x;y=y+p.y;}
 };
