@@ -1,26 +1,16 @@
-CC = g++
-#changer ceci pour linux: 
-#CCFLAGS = -Wall -Werror -std=c++11 -g -I../ -I/usr/include
-#LDFLAGS = -L/usr/lib -lsfml-graphics -lsfml-window -lsfml-system
-CCFLAGS = -Wall -Werror -std=c++11 -g -I../ -I/opt/homebrew/include
-LDFLAGS = -L/opt/homebrew/lib -lsfml-graphics -lsfml-window -lsfml-system
-SRC_DIR = ../code
-FIGURE_DIR = $(SRC_DIR)/Figure
-SPIROGRAPH_DIR = $(SRC_DIR)/Spirographe
-DISPLAY_DIR = $(SRC_DIR)/Affichage
-TEST_DIR = .
-SRC = $(wildcard $(FIGURE_DIR)/*.cc) $(wildcard $(SPIROGRAPH_DIR)/*.cc) $(wildcard $(DISPLAY_DIR)/*.cc)
-OBJ = $(SRC:.cc=.o)
-TST = $(wildcard $(TEST_DIR)/*.cpp)
-OBJ_TEST = $(OBJ) $(TST:.cpp=.o)
-testcase.out: $(OBJ_TEST)
-	$(CC) $(CCFLAGS) -o $@ $^ $(LDFLAGS)
-%.o: %.cpp
-	$(CC) $(CCFLAGS) -c $< -o $@
-%.o: %.cc
-	$(CC) $(CCFLAGS) -c $< -o $@
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall
+INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I../Figure -I../Spirographe -I../Affichage
+LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+
+# Source files for tests
+TEST_SOURCES = test_unitaire.cpp
+TEST_TARGET = test_unitaire
+
+# Build test target
+$(TEST_TARGET): $(TEST_SOURCES)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LDFLAGS) $(TEST_SOURCES) -o $(TEST_TARGET) $(LIBS)
+# Clean up build files
 clean:
-	rm -f $(OBJ_TEST) testcase.out
-.depends:
-	$(CC) -MM $(SRC) $(TST) > .depends
--include .depends
+	rm -f $(TEST_TARGET)

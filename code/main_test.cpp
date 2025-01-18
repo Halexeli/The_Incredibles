@@ -3,61 +3,41 @@
 #include "Affichage/Screen.hh"
 #include "Spirographe/Spirographe.hh"
 #include "Affichage/Bouton.hh"
-#include "Make_page.hh"
-#include "Inter_page.hh"
-
 
 
 
 int main() {
     Screen screen(960, 540); 
     //Page d'accueil
-    Page *page1,*page2,*page3,*current;
-    std::vector<Spirographe*> spirographes;
+    Page page;
+    //spiro
+    Spirographe *spirographe = new Spirographe(200.f, 30.f, 0.3f); 
+    //boutons
+    Bouton *plusBouton = new Bouton(50, 50, 50, 50, "+");
+    page += plusBouton;
+    Bouton *moinsBouton = new Bouton(50, 150, 50, 50, "-");
+    page += moinsBouton;
+    Bouton *resetBouton = new Bouton(50, 250, 100, 50, "Reset");
+    page += resetBouton;
+    Bouton *speedPlus = new Bouton(50, 350, 50, 50, ">");
+    page += speedPlus;
+    Bouton *speedMoins = new Bouton(50, 450, 50, 50, "<");
+    page += speedMoins;
+    //other half of the screen
+    Bouton *resetSpeed = new Bouton(600, 50, 100, 50, "Reset Speed");
+    page += resetSpeed;
+    Bouton *stop = new Bouton(600, 150, 100, 50, "Stop");
+    page += stop;
+    Bouton *colorButton = new Bouton(600, 250, 100, 50, "Color");
+    page += colorButton;
+    Bouton *crayonPlus = new Bouton(600, 350, 50, 50, "pen+");
+    page += crayonPlus;
+    Bouton *crayonMoins = new Bouton(600, 450, 50, 50, "pen-");
+    page += crayonMoins;
+
+
     sf::Clock clock;
     float speed = 0.5f;
-    //spiro
-    page1=Page1();
-    page2=Page2();
-    page3=Page3();
-    current=page1;
-    while(screen.isOpen()){
-        sf::Event event;
-        while (screen.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                screen.close();
-            }
-        }
-        //inter(current,page1,page2,page3,spirographes,screen);
-        //printf("Test3\n");
-        
-        inter(current,page1,page2,page3,spirographes,screen);
-        float deltaTime = clock.restart().asSeconds() * speed;
-        for(auto it:spirographes){
-            //printf("Test4\n");
-            it->update(deltaTime);
-            it->draw(screen);
-        }
-        //printf("Test5\n");
-        current->draw(screen);
-        //printf("Test6\n");
-        screen.render();
-        //printf("Test7\n");
-    }
-    for(auto it:spirographes){
-            delete it;
-        }
-    del_page(page1);
-    del_page(page2);
-    del_page(page3);
-    return 0;
-}
-
-/*
-    printf("page1 : %d\n",page1->get_id());
-    printf("page2 : %d\n",page2->get_id());
-    printf("page3 : %d\n",page3->get_id());
-
     //green pour bien commencer
     sf::Color currentCol= sf::Color::Green;
     //current size crayon
@@ -115,6 +95,22 @@ int main() {
             spirographe->setCrayonSize(spirographe->getCrayonSize() - 0.001);
         }
 
-        
+        float deltaTime = clock.restart().asSeconds() * speed;
+        spirographe->update(deltaTime);
+        spirographe->draw(screen);
+        page.draw(screen);
+        screen.render();
     }
-*/
+
+    delete spirographe;
+    delete plusBouton;
+    delete moinsBouton;
+    delete resetBouton;
+    delete speedPlus;
+    delete speedMoins;
+    delete resetSpeed;
+    delete stop;
+
+    return 0;
+}
+

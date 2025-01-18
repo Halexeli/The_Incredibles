@@ -11,7 +11,7 @@ public:
     // Constructeurs
     Cercle();
     Cercle(const Cercle& c);
-    Cercle(const Point& centre, const double rayon);
+    Cercle(Point * const centre, const double rayon);
 
     // Destructeur
     ~Cercle();
@@ -19,7 +19,7 @@ public:
     // Méthodes spécifiques au cercle
     double diametre() const;
     double circonference() const;
-    bool contientPoint(const Point& p) const;
+    bool const contientPoint(const Point& p) override;
 
 
     // Méthode d'affichage

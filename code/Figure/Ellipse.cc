@@ -6,7 +6,7 @@ Ellipse::Ellipse() : Ellipse_virtuelle(), b(0), angle(0) {}
 
 Ellipse::Ellipse(const Ellipse& p) : Ellipse_virtuelle(p), b(p.b), angle(p.angle) {}
 
-Ellipse::Ellipse(const Point& p, const double a, const double b, const double angle)
+Ellipse::Ellipse( Point* const p, const double a, const double b, const double angle)
     : Ellipse_virtuelle(p, a), b(b), angle(angle) {}
 
 
@@ -48,21 +48,21 @@ void Ellipse::pivoter(double angleSupplementaire) {
 }
 // Affiche l'ellipse dans la fenêtre window
 void Ellipse::afficher(Screen& window) {
-    window.Ellipse(static_cast<float>(getCentre().getX()), static_cast<float>(getCentre().getY()), static_cast<float>(a), static_cast<float>(b), static_cast<float>(angle), 0x0000FFFF); // Draw ellipse using Screen's ellipse method
+    window.Ellipse(static_cast<float>(getCentre()->getX()), static_cast<float>(getCentre()->getY()), static_cast<float>(a), static_cast<float>(b), static_cast<float>(angle), 0x0000FFFF); // Draw ellipse using Screen's ellipse method
 }
 // Affichage des informations de l'ellipse
-void Ellipse::afficherInfos() const {
+void const Ellipse::afficherInfos() {
     std::cout << "Ellipse : " << std::endl;
-    std::cout << "Centre : (" << getCentre().getX() << ", " << getCentre().getY() << ")" << std::endl;
+    std::cout << "Centre : (" << getCentre()->getX() << ", " << getCentre()->getY() << ")" << std::endl;
     std::cout << "Demi-grand axe (a) : " << a << std::endl;
     std::cout << "Demi-petit axe (b) : " << b << std::endl;
     std::cout << "Angle de rotation : " << angle << " degrés" << std::endl;
     std::cout << "Aire : " << aire() << std::endl;
     std::cout << "Périmètre (approximation) : " << perimetre() << std::endl;
 }
-bool Ellipse::contientPoint(const Point& point) const {
-    double dx = point.getX() - getCentre().getX();
-    double dy = point.getY() - getCentre().getY();
+bool const Ellipse::contientPoint(const Point& point) {
+    double dx = point.getX() - getCentre()->getX();
+    double dy = point.getY() - getCentre()->getY();
     double angleRad = angle * M_PI / 180;
     double x = cos(angleRad) * dx + sin(angleRad) * dy;
     double y = -sin(angleRad) * dx + cos(angleRad) * dy;

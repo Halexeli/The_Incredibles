@@ -110,7 +110,7 @@ void Screen::Figure_regular(float x, float y,int sommet,float angle, float size,
   _win->draw(convex);
 }
 
-void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> point, uint32_t color){
+void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point *> point, uint32_t color){
   // crée une forme vide
   sf::ConvexShape convex_irr;
   // définit le nombre de points (sommet)
@@ -118,7 +118,7 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> po
   // définit les points
   int i=0;
   for(auto it:point){
-    convex_irr.setPoint(i, sf::Vector2f(it.getX(),it.getY()));
+    convex_irr.setPoint(i, sf::Vector2f(it->getX(),it->getY()));
     i++;
   }
   convex_irr.setFillColor(sf::Color(color));
@@ -128,6 +128,7 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point> po
 
 bool Screen::Buttonclicked(float x, float y, float w, float h) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_win);
+    //printf("test2\n");
     return (mousePos.x >= x && mousePos.x <= x + w && mousePos.y >= y && mousePos.y <= y + h && sf::Mouse::isButtonPressed(sf::Mouse::Left));
 }
 
@@ -151,4 +152,13 @@ void Screen::circle(float x, float y, float radius, uint32_t color){
     circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
     circle.setPosition(x-radius, y-radius); // Centré
     _win->draw(circle);
+}
+
+void Screen::point(Point p,uint32_t color){
+  sf::CircleShape aff_point;
+  aff_point.setRadius(0.5); // Rayon
+  aff_point.setFillColor(sf::Color(color)); // transparent
+  aff_point.setOutlineThickness(1);
+  aff_point.setPosition(p.getX()-0.5, p.getY()-0.5); // Centré
+  _win->draw(aff_point);
 }

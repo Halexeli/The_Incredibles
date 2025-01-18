@@ -17,10 +17,10 @@
 class Screen: public sf::RenderWindow {
  public:
   Screen(uint16_t h, uint16_t w) : sf::RenderWindow(sf::VideoMode(h, w), "Incredible Spirographe"), _win(this){};
-  ~Screen(){delete _win;};
-  bool isOpen(){return _win->isOpen();}
-  void close(){_win->close();}
-  bool pollEvent(sf::Event& event){return _win->pollEvent(event);}
+  ~Screen(){/*delete _win;*/};
+  //bool isOpen(){return _win->isOpen();}
+  //void close(){_win->close();}
+  //bool pollEvent(sf::Event& event){return _win->pollEvent(event);}
   void render();
   void rect(float x, float y, float w, float h, uint32_t color = 0xFF0000FF);
   /** draw a filled rectangle
@@ -86,7 +86,7 @@ class Screen: public sf::RenderWindow {
     @param size taille des segments du centre de la figure 
     @param color 0xRRGGBBAA (default: light blue)
   */
-  void Figure_irregular(float x, float y,int sommet, std::vector <Point> point,uint32_t color= 0xAEFBFFFF);
+  void Figure_irregular(float x, float y,int sommet, std::vector <Point *> point,uint32_t color= 0xAEFBFFFF);
    /**   draw a irregular figure convex
     @param x x-coordinate of the center (in pixels)
     @param y y-coordinate of the center (in pixels)
@@ -105,8 +105,11 @@ class Screen: public sf::RenderWindow {
     @param point vecteur des coordonnées des points autour de la figure si (x,y)=(0,0)
     @param color default : blue
   */
-  void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../../Assets/Times_New_Roman/times_new_roman.ttf");
+  void text(float x ,float y,std::string text,int size,uint32_t color = 0x35EEEEFF,std::string font_file = "../Assets/Times_New_Roman/times_new_roman.ttf");
   //Permet d'afficher un texte
+
+  void point(Point p,uint32_t color = 0x00000000);
+  //affiche un point
 
   uint16_t w() const {return _w;}
   uint16_t h() const {return _h;}

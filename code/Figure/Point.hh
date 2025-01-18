@@ -4,23 +4,24 @@
 
 class Point{
     protected:
-        int x;
-        int y;
+        float x;
+        float y;
     public:
         Point():x(0),y(0){};
-        Point(int x, int y):x(x),y(y){};
+        Point(float _x, float _y):x(_x),y(_y){};
         Point(const Point& p):x(p.x),y(p.y){};
         ~Point(){};
 
         void afficher();
     
-        int getX() const;
-        int getY() const;
+        float getX() const{return(x);};
+        float getY() const{return(y);};
 
-        void setX(int x);
-        void setY(int y);
+        void setX(float _x){x=_x;};
+        void setY(float _y){y=_y;};
 
         
-        void operator=(const Point& p);
+        void operator=(const Point& p){x=p.x;y=p.y;};
         bool operator==(const Point& p);
+        void operator+=(const Point& p){x=x+p.x;y=y+p.y;}
 };
