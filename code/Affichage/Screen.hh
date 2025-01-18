@@ -16,7 +16,7 @@
 
 class Screen: public sf::RenderWindow {
  public:
-  Screen(uint32_t w, uint32_t h) : _h(h),_hr(h),_wr(w), _w(w), sf::RenderWindow(sf::VideoMode(w, h), "Incredible Spirographe"), _win(this){};
+  Screen(uint32_t w, uint32_t h) :sf::RenderWindow(sf::VideoMode(w, h), "Incredible Spirographe"),  _win(this) , _w(w) , _h(h),_wr(w),_hr(h){};
   ~Screen(){/*delete _win;*/};
   //bool isOpen(){return _win->isOpen();}
   //void close(){_win->close();}

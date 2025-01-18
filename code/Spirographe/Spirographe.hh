@@ -6,6 +6,7 @@
 class Spirographe {
 public:
     //construire un spirographe 
+    Spirographe();
     Spirographe(float R, float r, float l);
     void update(float deltaTime);
     void draw(Screen& window);

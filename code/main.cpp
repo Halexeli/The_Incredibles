@@ -31,11 +31,13 @@ int main() {
                 sf::Vector2u taille=screen.getSize();
                 screen.resized_screen(taille.x,taille.y);
             }
+            if(event.type==sf::Event::MouseButtonPressed){
+        inter(current,page1,page2,spirographes,screen);
+            }
         }
         //inter(current,page1,page2,page3,spirographes,screen);
         //printf("Test3\n");
         
-        inter(current,page1,page2,spirographes,screen);
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
             //printf("Test4\n");

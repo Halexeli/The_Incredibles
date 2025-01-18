@@ -15,13 +15,13 @@ TEST_SUITE("Spirographe") {
   TEST_CASE("1: update() bonne taille"){
     Spirographe s1;
     for(int i=0;i<10000;i++)
-    s1.update();
+    s1.update(i);
     CHECK(s1.get_to_draw().size()<=1000);
   }
 
   TEST_CASE("2: update() commence au bon endroit"){
     Spirographe s1;
-    s1.update();
+    s1.update(0.1);
     float x_temp,y_temp;
     x_temp,y_temp =s1.get_to_draw()[0];
     CHECK(x_temp==0.f);

@@ -1,6 +1,14 @@
 #include "Spirographe.hh"
 #include <cmath>
 
+Spirographe::Spirographe(): sommet(int(100/20)),Oc(Point(0, 0)),Ic(Point(80, 0)),Cr(Point(80, 0)), m_R(100), m_r(20), m_l(0), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, 100), m_innerCircle(&Ic, 20), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
+{       //last position du crayon initialisée à la position du crayon au temps 0
+        m_lastCrayonPosition = genererCrayonPosition(m_time);
+        //couleur du crayon
+        m_Crayon.setFillColor(sf::Color::Red);
+        initCrayon = 0;
+}
+
 //nb: mtime est le temps écoulé
 Spirographe::Spirographe(float R, float r, float l) : sommet(int(R/r)),Oc(Point(400, 300)),Ic(Point(400 + (R - r), 300)),Cr(Point(0, 0)), m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, R), m_innerCircle(&Ic, r), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
 {       //last position du crayon initialisée à la position du crayon au temps 0
