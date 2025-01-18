@@ -1,5 +1,6 @@
 // Let DocTest provide main():
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+using namespace doctest; // Utilisation du namespace doctest
 
 #include "doctest.h"
 #include "../Spirographe/Spirographe.hh"
@@ -10,6 +11,7 @@
 #include "../Affichage/Bouton.hh"
 #include "../Affichage/Page.hh"
 #include "../Affichage/Screen.hh"
+#include "../Figure/Cercle.hh"
 
 TEST_SUITE("Spirographe") {
   TEST_CASE("1: update() bonne taille"){
@@ -21,72 +23,150 @@ TEST_SUITE("Spirographe") {
 
   TEST_CASE("2: update() commence au bon endroit"){
     Spirographe s1;
-    s1.update(0.1);
+    s1.update();
     float x_temp,y_temp;
     x_temp,y_temp =s1.get_to_draw()[0];
     CHECK(x_temp==0.f);
     CHECK(y_temp==0.f);
   }
-}
+  TEST_CASE("Changement de couleur (setColor)") {
+        Spirographe spiro(100.0f, 50.0f, 0.5f);
+        sf::Color newColor = sf::Color::Red;
+        spiro.setColor(newColor);
 
-TEST_SUITE("Ellipse"){
-  TEST_CASE("5: check save and load")
-    {
-      Point p0(0,0);
-      Ellipse e0(p0,10);
-      Cercle p1();
-      //CHECK();
-
+        // Vérifie que la couleur du spirographe et du crayon a été changée
+        CHECK(spiro.getColor() == newColor);
     }
 }
-
-TEST_CASE("3: Grid contents"){
-
-  SUBCASE("All characters are printable character"){
-
-  }
-  SUBCASE("Same grids are equals")
-    {
-
+TEST_SUITE("Cercle") {
+    TEST_CASE("Constructeur avec paramètres") {
+        Point centre(5.0, 5.0);
+        Cercle c2(centre, 10.0);
+        CHECK(c2.diametre() == Approx(20.0)); // Diamètre = 2 * rayon
+        CHECK(c2.circonference() == Approx(2 * M_PI * 10.0)); // Circonférence = 2πr
     }
-  SUBCASE("Two successively generated grid are different")
-    {
 
+    TEST_CASE("Constructeur de copie") {
+        Point centre(3.0, 4.0);
+        Cercle c1(centre, 8.0);
+        Cercle c2(c1);
+        CHECK(c2.diametre() == c1.diametre());
+        CHECK(c2.circonference() == c1.circonference());
     }
-  SUBCASE("reset make differences")
-    {
 
+    TEST_CASE("Méthode contientPoint() - Point à l'intérieur") {
+        Point centre(0.0, 0.0);
+        Cercle c1(centre, 5.0);
+        Point p1(3.0, 4.0); // Distance = 5 (à l'intérieur)
+        CHECK(c1.contientPoint(p1) == true);
+    }
+
+    TEST_CASE("Redimensionner") {
+        Point centre(2.0, 2.0);
+        Cercle c1(centre, 4.0);
+        c1.redimensionner(2.0); // Agrandit le rayon
+        CHECK(c1.diametre() == Approx(16.0)); // 2 * 4 * 2
+        CHECK(c1.circonference() == Approx(2 * M_PI * 8.0)); // 2π * 8
     }
 }
-TEST_SUITE("Affichage"){
-  TEST_CASE("3: Bouton")
-    {
 
+TEST_SUITE("Ellipse") {
+    TEST_CASE("Constructeur avec paramètres") {
+        Point centre(2.0, 3.0);
+        Ellipse e2(centre, 5.0, 3.0, 45.0);
+        CHECK(e2.getA() == Approx(5.0));
+        CHECK(e2.getB() == Approx(3.0));
+        CHECK(e2.getAngle() == Approx(45.0));
+        CHECK(e2.aire() == Approx(M_PI * 5.0 * 3.0)); // Aire = πab
     }
 
-  TEST_CASE("7: Page")
-    {
-
-      SUBCASE("Correct size")
-        {
-
-        }
-      SUBCASE(" starting point whithin bounds")
-        {
-
-        }
+    TEST_CASE("Méthode contientPoint() - Point à l'intérieur") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0); // Pas de rotation
+        Point p1(3.0, 0.0); // À l'intérieur
+        CHECK(e1.contientPoint(p1) == true);
     }
 
-  TEST_CASE("7: Screen")
-    {
-
-      SUBCASE("Correct size")
-        {
-
-        }
-      SUBCASE(" starting point whithin bounds")
-        {
-
-        }
+    TEST_CASE("Méthode contientPoint() - Point à l'extérieur") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0);
+        Point p2(6.0, 0.0); // À l'extérieur
+        CHECK(e1.contientPoint(p2) == false);
     }
+
+    TEST_CASE("Redimensionner avec deux facteurs") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0);
+        e1.redimensionner(2.0, 3.0);
+        CHECK(e1.getA() == Approx(10.0)); // 5 * 2
+        CHECK(e1.getB() == Approx(9.0));  // 3 * 3
+    }
+
+    TEST_CASE("Redimensionner avec un facteur unique") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0);
+        e1.redimensionner(2.0);
+        CHECK(e1.getA() == Approx(10.0)); // 5 * 2
+        CHECK(e1.getB() == Approx(6.0));  // 3 * 2
+    }
+
+    TEST_CASE("Pivoter") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0);
+        e1.pivoter(45.0);
+        CHECK(e1.getAngle() == Approx(45.0));
+        e1.pivoter(360.0);
+        CHECK(e1.getAngle() == Approx(45.0)); // Retourne à l'angle initial
+        e1.pivoter(400.0);
+        CHECK(e1.getAngle() == Approx(85.0)); // 45 + 400 - 360 = 85
+    }
+
+    TEST_CASE("Calcul de l'aire") {
+        Point centre(0.0, 0.0);
+        Ellipse e1(centre, 5.0, 3.0, 0.0);
+        CHECK(e1.aire() == Approx(M_PI * 5.0 * 3.0));
+    }
+}
+TEST_SUITE("Polyedre") {
+    TEST_CASE("Constructeur avec paramètres - Polyedre virtuel") {
+        Point centre(5.0, 5.0);
+        Polyedre_virtuel p2(centre, 4);
+        CHECK(p2.getCentre().getX() == Approx(5.0));
+        CHECK(p2.getCentre().getY() == Approx(5.0));
+    }
+
+    TEST_CASE("Constructeur de copie - Polyedre virtuel") {
+        Point centre(2.0, 3.0);
+        Polyedre_virtuel p1(centre, 6);
+        Polyedre_virtuel p2(p1);
+        CHECK(p2.getCentre().getX() == p1.getCentre().getX());
+        CHECK(p2.getCentre().getY() == p1.getCentre().getY());
+    }
+
+    TEST_CASE("Méthode contientPoint - Polyedre régulier") {
+        Point centre(0.0, 0.0);
+        Polyedre_regulier p1(centre, 4, 5.0, 0.0); // Carré de côté 5
+
+        Point inside(2.0, 2.0);  // À l'intérieur
+        Point outside(6.0, 6.0); // À l'extérieur
+
+        CHECK(p1.contientPoint(inside) == true);
+        CHECK(p1.contientPoint(outside) == false);
+    }
+
+    TEST_CASE("Méthode contientPoint - Polyedre irrégulier") {
+        Point centre(0.0, 0.0);
+        std::stack<std::vector<std::pair<double, double>>> sommets;
+        sommets.push({{0.0, 0.0}, {4.0, 0.0}, {4.0, 4.0}, {0.0, 4.0}}); // Rectangle
+
+        Polyedre_irregulier p2(centre, 4, sommets);
+
+        Point inside(2.0, 2.0);  // À l'intérieur
+        Point outside(5.0, 5.0); // À l'extérieur
+
+        CHECK(p2.contientPoint(inside) == true);
+        CHECK(p2.contientPoint(outside) == false);
+    }
+
+    
 }

@@ -86,4 +86,5 @@ class Texte{
     ~Texte(){};
     void draw(Screen &screen);
     void add(float x);
+    void set(std::string val){texte=val;};
 };

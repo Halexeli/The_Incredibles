@@ -114,7 +114,14 @@ void inter(Page *&current,Page *page1,Page *page2,std::vector<Spirographe*>&spir
     }
     else if(current->get_id()==1)
     {
-        if(inter_in(current,spirographes.back(),screen))
+        if(inter_in(current,spirographes.back(),screen)){
             current=page1;
+            page2->get_String(0)->set("5");
+            page2->get_String(2)->set("400");
+            page2->get_String(3)->set("300");
+            page2->get_String(4)->set("100");
+            page2->get_String(6)->set("0.3");
+        }
+
     }
 }
