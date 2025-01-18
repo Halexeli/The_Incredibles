@@ -87,7 +87,7 @@
           <mxGeometry y="34" width="280" height="306" as="geometry" />
         </mxCell>
         <mxCell id="TUDsm-XgNNnCpX9dQ1m_-37" value="Point" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="1120" y="60" width="160" height="130" as="geometry">
+          <mxGeometry x="1150" y="150" width="160" height="130" as="geometry">
             <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
