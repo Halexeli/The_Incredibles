@@ -15,27 +15,33 @@ bool inter_in(Page *current,Spirographe *spirographes,Screen &screen){
         spirographes->clear_crayon();
         current->get_String(2)->add(0.5);
     }
-    else if(current->get_Bouton(4)->Ispressed(screen) && (test.getY()+R)<size.y){
-        spirographes->deplacery(0.5);
+    else if(current->get_Bouton(4)->Ispressed(screen) && (test.getY()-R)>0){
+        spirographes->deplacery(-0.5);
         spirographes->clear_crayon();
-        current->get_String(3)->add(0.5);
+        current->get_String(3)->add(-0.5);
     }
     else if(current->get_Bouton(3)->Ispressed(screen) && (test.getX()-R)>0){
         spirographes->deplacerx(-0.5);
         spirographes->clear_crayon();
         current->get_String(2)->add(-0.5);
     }
-    else if(current->get_Bouton(5)->Ispressed(screen) && (test.getY()-R)>0){
-        spirographes->deplacery(-0.5);
+    else if(current->get_Bouton(5)->Ispressed(screen) && (test.getY()+R)<size.y){
+        spirographes->deplacery(0.5);
         spirographes->clear_crayon();
-        current->get_String(3)->add(-0.5);
-    }
-    else if(current->get_Bouton(0)->Ispressed(screen)){
+        current->get_String(3)->add(0.5);
+    }/*
+    else if(current->get_Bouton(0)->Ispressed(screen) && spirographes->get_sommet()>0){
         //ajout contrainte
+        spirographes->aug_sommet(-1);
+        spirographes->clear_crayon();
+        current->get_String(0)->add(-1);
     }
     else if(current->get_Bouton(1)->Ispressed(screen)){
         //ajout contrainte
-    }
+        spirographes->aug_sommet(1);
+        spirographes->clear_crayon();
+        current->get_String(0)->add(1);
+    }*/
     else if(current->get_Bouton(6)->Ispressed(screen)){
         spirographes->aug_taille(0.5);
         spirographes->clear_crayon();

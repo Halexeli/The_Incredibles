@@ -22,6 +22,8 @@ public:
     void aug_crayon(float r){if(m_l+r>=0){m_l+=r;m_Crayon+=r;}};
     const Point &get_centre(){return(Oc);};
     const float get_R(){return(m_R);};
+    void aug_sommet(int nb);
+    const int get_sommet(){return(sommet);}; 
 
 private:
     //ceci pour générer la position du crayon
@@ -32,6 +34,7 @@ private:
     float m_r;   //cercle roulant
     float m_l;   //distance du crayon par rapport au centre du cercle intérieur
     float m_time; //temps courant
+    int sommet;
 
     //données pour le spirographe
     //vertexarray: permet de dessiner des lignes entre les points

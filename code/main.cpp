@@ -15,7 +15,7 @@ int main() {
     Page *page1,*page2,*page3,*current;
     std::vector<Spirographe*> spirographes;
     sf::Clock clock;
-    float speed = 1.0f;
+    float speed = 2.0f;
     //spiro
     page1=Page1();
     page2=Page2();
@@ -47,6 +47,7 @@ int main() {
         //printf("Test6\n");
         screen.render();
         //printf("Test7\n");
+        //sf::sleep(sf::milliseconds(50));
     }
     for(auto it:spirographes){
             delete it;
