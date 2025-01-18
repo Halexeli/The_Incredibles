@@ -88,6 +88,8 @@ bool inter_in(Page *current,Spirographe *spirographes,Screen &screen){
     return(0);
 }
 
+
+
 int inter3(Page *current,Spirographe *spirographe,Screen &screen){
     return(0);
 }

@@ -15,7 +15,7 @@ int main() {
     Page *page1,*page2,*page3,*current;
     std::vector<Spirographe*> spirographes;
     sf::Clock clock;
-    float speed = 0.5f;
+    float speed = 1.0f;
     //spiro
     page1=Page1();
     page2=Page2();
