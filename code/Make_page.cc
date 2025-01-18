@@ -29,7 +29,7 @@ Page *Page2(){
     *page += sommetplus; //1
     Texte *sommet_temp= new Texte(15,65,18,0xA3D5FFFF,"4");
     *page += sommet_temp;//0
-    Texte *sommet= new Texte(180,70,12,0x1A1A77FF,"nombre de sommets");
+    Texte *sommet= new Texte(180,70,12,0xA3D5FFFF,"nombre de sommets");
     *page += sommet;//1
 
     Bouton *xplus = new Bouton(605, 60, 30, 30, "x +");
@@ -51,7 +51,7 @@ Page *Page2(){
     *page += taillemoins;//7
     Texte *taille_temp= new Texte(15,110,18,0xA3D5FFFF,"100");
     *page += taille_temp;//4
-    Texte *taille= new Texte(180,115,12,0x1A1A77FF,"taille de la figure");
+    Texte *taille= new Texte(180,115,12,0xA3D5FFFF,"taille de la figure");
     *page += taille;//5
 
     Bouton *crayonplus = new Bouton(625, 105, 30, 30, "+");
@@ -60,12 +60,12 @@ Page *Page2(){
     *page += crayonmoins;//9
     Texte *crayon_temp= new Texte(495,110,18,0xA3D5FFFF,"0.3");
     *page += crayon_temp;//6
-    Texte *crayon= new Texte(660,115,12,0x1A1A77FF,"taille du crayon");
+    Texte *crayon= new Texte(660,115,12,0xA3D5FFFF,"taille du crayon");
     *page += crayon;//7
 
     Bouton *ok= new Bouton(845, 15, 30, 30, "OK");
     *page += ok;//10
-    Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure reguliere");
+    Texte *TypeFigure=new Texte(500,15,12,0xA3D5FFFF,"Figure reguliere");
     *page += TypeFigure;//8
 
     Bouton *rose= new Bouton(15, 165, 75, 30, "Rose",0xFF33D4FF);
