@@ -13,18 +13,18 @@ class Bouton{
    
     std::string label;
     std::string font_file;
-    
+    uint32_t color;
     sf::Font font;
     sf::Text text;
     public:
-    Bouton() : x(0), y(0), w(2), h(1), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
+    Bouton() : x(0), y(0), w(2), h(1), font_file("../Assets/Times_New_Roman/times_new_roman.ttf"),color(0x1A1A77FF) {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Fail load font: " << font_file << std::endl;
         }
         text.setFont(font);
     }
     //ajout constructeur pour bouton avec texte
-    Bouton(float _x, float _y, float _w, float _h, const std::string& _label) : x(_x), y(_y), w(_w), h(_h), label(_label), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
+    Bouton(float _x, float _y, float _w, float _h, const std::string& _label, uint32_t _color=0x1A1A77FF) : x(_x), y(_y), w(_w), h(_h), label(_label), font_file("../Assets/Times_New_Roman/times_new_roman.ttf"),color(_color) {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Failed to load font: " << font_file << std::endl;
         }
@@ -37,7 +37,7 @@ class Bouton{
         text.setPosition(x + w / 2.0f, y + h / 2.0f);
     }
 
-    Bouton(const Bouton &p) : x(p.x), y(p.y), w(p.w), h(p.h), label(p.label), font_file("../Assets/Times_New_Roman/times_new_roman.ttf") {
+    Bouton(const Bouton &p) : x(p.x), y(p.y), w(p.w), h(p.h), label(p.label), font_file(p.font_file),color(p.color) {
         if (!font.loadFromFile(font_file)) {
             std::cerr << "Fail load font: " << font_file << std::endl;
         }

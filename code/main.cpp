@@ -19,7 +19,7 @@ int main() {
     //spiro
     page1=Page1();
     page2=Page2();
-    page3=Page3();
+    //page3=Page3();
     current=page1;
     while(screen.isOpen()){
         sf::Event event;
@@ -27,11 +27,15 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 screen.close();
             }
+            if(event.type==sf::Event::Resized){
+                sf::Vector2u taille=screen.getSize();
+                screen.resized_screen(taille.x,taille.y);
+            }
         }
         //inter(current,page1,page2,page3,spirographes,screen);
         //printf("Test3\n");
         
-        inter(current,page1,page2,page3,spirographes,screen);
+        inter(current,page1,page2,spirographes,screen);
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
             //printf("Test4\n");
@@ -49,7 +53,8 @@ int main() {
         }
     del_page(page1);
     del_page(page2);
-    del_page(page3);
+    //del_page(page3);
+    //std::cout<<screen.w()<<std::endl;
     return 0;
 }
 

@@ -6,6 +6,10 @@
 
 /* Positions origin are upper left corner */
 
+void Screen::resized_screen(uint32_t wr,uint32_t hr){
+  _wr=wr;
+  _hr=hr;
+}
 
 void Screen::render()
 {
@@ -128,8 +132,13 @@ void Screen::Figure_irregular(float x, float y,int sommet,std::vector <Point *> 
 
 bool Screen::Buttonclicked(float x, float y, float w, float h) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(*_win);
-    //printf("test2\n");
-    return (mousePos.x >= x && mousePos.x <= x + w && mousePos.y >= y && mousePos.y <= y + h && sf::Mouse::isButtonPressed(sf::Mouse::Left));
+    uint32_t pos_x=mousePos.x,pos_y=mousePos.y;
+    pos_x=pos_x*_w;
+    pos_y=pos_y*_h;
+    pos_x=pos_x/_wr;
+    pos_y=pos_y/_hr;
+    //std::cout<<" y = "<<pos_y<<" x = "<<pos_x<<std::endl;
+    return(pos_x >= x && pos_x <= (x + w) && pos_y >= y && pos_y <= y + h && sf::Mouse::isButtonPressed(sf::Mouse::Left));
 }
 
 void Screen::Ellipse(float x, float y,float a, float b,float angle,uint32_t color){
@@ -149,7 +158,7 @@ void Screen::circle(float x, float y, float radius, uint32_t color){
     circle.setRadius(radius); // Rayon
     circle.setFillColor(sf::Color(color)); // transparent
     circle.setOutlineThickness(1);
-    circle.setOutlineColor(sf::Color(255, 255, 255)); // Blanc
+    circle.setOutlineColor(sf::Color(055, 055, 055)); // Blanc
     circle.setPosition(x-radius, y-radius); // Centré
     _win->draw(circle);
 }

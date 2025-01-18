@@ -19,7 +19,9 @@ public:
     void deplacerx(float x);
     void deplacery(float y);
     void aug_taille(float r);
-    void aug_crayon(float r){m_l+=r;m_Crayon+=r;};
+    void aug_crayon(float r){if(m_l+r>=0){m_l+=r;m_Crayon+=r;}};
+    const Point &get_centre(){return(Oc);};
+    const float get_R(){return(m_R);};
 
 private:
     //ceci pour générer la position du crayon
