@@ -14,7 +14,7 @@ LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 #LDFLAGS = -LC:/path/to/sfml/lib
 #LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
-TEST_SOURCES = test_unitaire.cpp ../Spirographe/Spirographe.cc ../Figure/Cercle.cc ../Figure/Ellipse.cc ../Figure/Polyedre.cc ../Figure/Ellipse_virtuelle.cc ../Affichage/Screen.cc ../Affichage/Page.cc ../Affichage/Bouton.cc 
+TEST_SOURCES = test_unitaire.cpp ../Spirographe/spirographe.cc ../Figure/Cercle.cc ../Figure/Ellipse.cc ../Figure/Polyedre.cc ../Figure/Ellipse_virtuelle.cc ../Affichage/Screen.cc ../Affichage/Page.cc ../Affichage/Bouton.cc 
 TEST_TARGET = test_unitaire
 
 $(TEST_TARGET): $(TEST_SOURCES)
