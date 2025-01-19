@@ -5,19 +5,17 @@ https://docs.google.com/document/d/1v6DojOyck1JiW-xOi7uJPf6Dva5Fpj3pH-NnuBG6dqI/
 
 Idee de base :
 
-- simulation de spirographe qui aurait des contraintes pour former certaines figures
-- ajout : pouvoir dessiner des figures simples
-- ajout : créer une autre classe spirographe avec une base en ellipse et plusieurs cercles ou ellipse a l'interieur ou a l'exterieur
-
-Autre idées:
--Choisir les paramètres selon des touches spécifiques sur le clavier et les modifier avec les mouvements de la souris
-
-https://github.com/Beatzoid/sfml-macos/blob/master/Makefile
+- simulation de spirographes modifiable par l'utilisateur 
+- peut dessiner des formes régulières: triangle, carré, polygone (5 sommets) selon le choix de l'utilisateur
 
 
-Commandes utilisées pour sfml :
- 
-g++ -Wall Ellipse.cc -c Ellipse.o -lsfml-graphics -lsfml-window -lsfml-system Ellipse.hh Figure.hh Point.hh
-g++ -Wall -c main.o  main.cc -lsfml-graphics -lsfml-window -lsfml-system Figure/Ellipse.hh
-g++ -Wall -o main.out  main.o -lsfml-graphics -lsfml-window -lsfml-system Figure/Ellipse.o Figure/Ellipse.hh Figure/Point.hh Figure/Figure.hh
-./main.out 
+Packages requis: 
+-SFML 
+
+Configuration: 
+-changer les paths pour SFML dans les makefile selon la machine (windows,linux, macos) 
+-make dans code pour spirograph 
+-make dans test pour executer les testcases
+
+Idées pour le futur: 
+-automatiser le dessin de figures en choisissant directement une figure reguliere ou irrègulière d'une liste, et laisser le spirographe automatiquement dessiner cette figure
