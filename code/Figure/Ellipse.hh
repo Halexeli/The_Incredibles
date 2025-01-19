@@ -24,5 +24,5 @@ public:
     void pivoter(double angleSupplementaire);
     void afficher(Screen& window) override;
     bool const contientPoint(const Point& point) override;
-    void const afficherInfos() override;
+    void afficherInfos() const override;
 };

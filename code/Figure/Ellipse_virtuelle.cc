@@ -27,6 +27,8 @@ void Ellipse_virtuelle::ajusterDansFenetre(int largeurFenetre, int hauteurFenetr
 }
 
 
-void const Ellipse_virtuelle::afficherInfos() {
-    //faut ajouter ça
+void Ellipse_virtuelle::afficherInfos() const {
+    std::cout << "Ellipse virtuelle : " << std::endl;
+    std::cout << "Centre : (" << centre->getX() << ", " << centre->getY() << ")" << std::endl;
+    std::cout << "Demi-grand axe : " << a << std::endl;
 }

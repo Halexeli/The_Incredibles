@@ -21,3 +21,8 @@ void Texte::add(float x){
     nb+=x;
     texte=std::to_string(nb);
 }
+
+void Texte::setText(const std::string &x){
+    texte=x;
+    text.setString(texte);
+}

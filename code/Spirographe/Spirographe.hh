@@ -20,11 +20,13 @@ public:
     void deplacery(float y);
     void aug_taille(float r);
     void aug_crayon(float r){m_l+=r;m_Crayon+=r;};
-
-private:
+    void setSommets(int sommets);
     //ceci pour générer la position du crayon
     //afin de le dessiner sur l'écran en temps réel
     sf::Vector2f const genererCrayonPosition(float time);
+
+private:
+
     float initCrayon;
     float m_R;   //cercle fixe
     float m_r;   //cercle roulant

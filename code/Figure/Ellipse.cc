@@ -51,7 +51,7 @@ void Ellipse::afficher(Screen& window) {
     window.Ellipse(static_cast<float>(getCentre()->getX()), static_cast<float>(getCentre()->getY()), static_cast<float>(a), static_cast<float>(b), static_cast<float>(angle), 0x0000FFFF); // Draw ellipse using Screen's ellipse method
 }
 // Affichage des informations de l'ellipse
-void const Ellipse::afficherInfos() {
+void Ellipse::afficherInfos() const {
     std::cout << "Ellipse : " << std::endl;
     std::cout << "Centre : (" << getCentre()->getX() << ", " << getCentre()->getY() << ")" << std::endl;
     std::cout << "Demi-grand axe (a) : " << a << std::endl;

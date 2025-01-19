@@ -31,7 +31,7 @@ int main() {
         //inter(current,page1,page2,page3,spirographes,screen);
         //printf("Test3\n");
         
-        inter(current,page1,page2,page3,spirographes,screen);
+        inter(current,page1,page2,page3,spirographes,screen,speed);
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
             //printf("Test4\n");

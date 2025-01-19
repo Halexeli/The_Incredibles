@@ -23,11 +23,11 @@ public:
 
 
     // Méthode d'affichage
-    void afficher(Screen& window);
+    void afficher(Screen& window) override;
 
     // Méthode de redimensionnement
-    void redimensionner(double facteur);
+    void redimensionner(double facteur) override;
 
     // Méthode d'informations
-    void afficherInfos() const;
+    void afficherInfos() const override;
 };

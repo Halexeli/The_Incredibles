@@ -2,8 +2,11 @@
 #include <cmath>
 
 //nb: mtime est le temps écoulé
-Spirographe::Spirographe(float R, float r, float l) : Oc(Point(400, 300)),Ic(Point(400 + (R - r), 300)),Cr(Point(0, 0)), m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, R), m_innerCircle(&Ic, r), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
-{       //last position du crayon initialisée à la position du crayon au temps 0
+Spirographe::Spirographe(float R, float r, float l)
+    : m_R(R), m_r(r), m_l(l), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip),
+      m_outerCircle(&Oc, R), m_innerCircle(&Ic, r), m_Crayon(&Cr, 2),
+      Oc(Point(400, 300)), Ic(Point(400 + (R - r), 300)), Cr(Point(0, 0)), m_color(sf::Color::Green) {
+        //last position du crayon initialisée à la position du crayon au temps 0
         m_lastCrayonPosition = genererCrayonPosition(m_time);
         //couleur du crayon
         m_Crayon.setFillColor(sf::Color::Red);
@@ -101,4 +104,26 @@ void Spirographe::aug_taille(float r){
     m_r+=r*(m_r/m_R);
     m_outerCircle+=r;
     m_innerCircle+=r*(m_r/m_R);
+}
+void Spirographe::setSommets(int sommets) {
+    switch (sommets) {
+        case 3: 
+            m_R = 100;
+            m_r = 33.3f; 
+            m_l = 0.5f;
+            break;
+        case 4: // Square
+            m_R = 100; 
+            m_r = 25; 
+            m_l = 0.7f; 
+            break;
+        case 5:
+            m_R = 100;
+            m_r = 20;
+            m_l = 0.5f;
+            break;
+        default:
+            break;
+    }
+    reset();
 }

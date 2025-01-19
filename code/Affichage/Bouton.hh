@@ -86,4 +86,6 @@ class Texte{
     ~Texte(){};
     void draw(Screen &screen);
     void add(float x);
+    void setText(const std::string &text);
+    std::string getText() const { return texte; }
 };

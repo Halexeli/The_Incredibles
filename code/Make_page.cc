@@ -62,8 +62,16 @@ Page *Page2(){
 
     Bouton *ok= new Bouton(845, 15, 30, 30, "OK");
     *page += ok;//12
-    Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure reguliere");
-    *page += TypeFigure;//8
+    //Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure reguliere");
+    //*page += TypeFigure;//8
+
+
+    Bouton *speedPlus = new Bouton(145, 450, 30, 30, "+");
+    *page += speedPlus;
+    Bouton *speedMinus = new Bouton(290, 450, 30, 30, "-");
+    *page += speedMinus;
+    Texte *speedLabel = new Texte(180, 460, 12, 0x1A1A77FF, "Speed");
+    *page += speedLabel;
     return(page);
 }
 
@@ -122,8 +130,9 @@ Page *Page3(){
 
     Bouton *ok= new Bouton(845, 15, 30, 30, "OK");
     *page += ok;
-    Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure irreguliere");
-    *page += TypeFigure;
+    
+    //Texte *TypeFigure=new Texte(500,15,12,0x1A1A77FF,"Figure irreguliere");
+    //*page += TypeFigure;
     return(page);
 }
 
