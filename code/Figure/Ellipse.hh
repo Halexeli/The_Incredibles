@@ -11,7 +11,7 @@ public:
     Ellipse();
     Ellipse(const Ellipse& p);
     Ellipse(Point * const p, const double a, const double b, const double angle);
-
+    ~Ellipse(){};
     double getB() const;
     void setB(double _b);
     double getAngle() const;

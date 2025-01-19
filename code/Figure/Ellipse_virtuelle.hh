@@ -20,5 +20,5 @@ public:
     virtual void afficher(Screen& window) = 0;
     virtual void redimensionner(double facteur) = 0;
     void ajusterDansFenetre(int largeurFenetre, int hauteurFenetre);
-    ~Ellipse_virtuelle() = default;
+    ~Ellipse_virtuelle()= default;
 };

@@ -10,53 +10,61 @@ bool inter_in(Page *current,Spirographe *spirographes,Screen &screen){
     const Point test=spirographes->get_centre();
     sf::Vector2u size=screen.getSize();
     const float R=spirographes->get_R();
+    //x +
     if(current->get_Bouton(2)->Ispressed(screen) && size.x>(test.getX()+R)){
         spirographes->deplacerx(2);
         spirographes->clear_crayon();
         current->get_String(2)->add(2);
     }
+    //y -
     else if(current->get_Bouton(4)->Ispressed(screen) && (test.getY()-R)>0){
         spirographes->deplacery(-2);
         spirographes->clear_crayon();
         current->get_String(3)->add(-2);
     }
+    //x -
     else if(current->get_Bouton(3)->Ispressed(screen) && (test.getX()-R)>0){
         spirographes->deplacerx(-2);
         spirographes->clear_crayon();
         current->get_String(2)->add(-2);
     }
+    //y +
     else if(current->get_Bouton(5)->Ispressed(screen) && (test.getY()+R)<size.y){
         spirographes->deplacery(2);
         spirographes->clear_crayon();
         current->get_String(3)->add(2);
     }
+    //sommet +1
     else if(current->get_Bouton(0)->Ispressed(screen) && spirographes->get_sommet()>0){
-        //ajout contrainte
         spirographes->aug_sommet(-1);
         spirographes->clear_crayon();
         current->get_String(0)->add(-1);
     }
+    //sommet -1
     else if(current->get_Bouton(1)->Ispressed(screen)){
-        //ajout contrainte
         spirographes->aug_sommet(1);
         spirographes->clear_crayon();
         current->get_String(0)->add(1);
     }
+    //rayon globale +1
     else if(current->get_Bouton(6)->Ispressed(screen)){
         spirographes->aug_taille(2);
         spirographes->clear_crayon();
         current->get_String(4)->add(2);
     }
+    //rayon globale -1
     else if(current->get_Bouton(7)->Ispressed(screen)){
         spirographes->aug_taille(-2);
         spirographes->clear_crayon();
         current->get_String(4)->add(-2);
     }
+    //taille du crayon + 0.1
     else if(current->get_Bouton(8)->Ispressed(screen)){
         spirographes->aug_crayon(0.1);
         spirographes->clear_crayon();
         current->get_String(6)->add(0.1);
     }
+    //taille du crayon - 0.1
     else if(current->get_Bouton(9)->Ispressed(screen) && spirographes->getCrayonSize()-0.02>=0){
             spirographes->aug_crayon(-0.1);
             spirographes->clear_crayon();
@@ -94,27 +102,23 @@ bool inter_in(Page *current,Spirographe *spirographes,Screen &screen){
     return(0);
 }
 
-
-
-int inter3(Page *current,Spirographe *spirographe,Screen &screen){
-    return(0);
-}
 void inter(Page *&current,Page *page1,Page *page2,std::vector<Spirographe*>&spirographes,Screen &screen){
     if(current->get_id()==0)
     {
-        //printf("dans case 0\n");
         if(page1->get_Bouton(0)->Ispressed(screen)){
-            //std::cout<<"bouton pressed"<<std::endl;
+            //on ajoute un un spirographe
             current=page2;
             spirographes.push_back(new Spirographe(100.f, 20.f, 0.3f));
         }
         else if(page1->get_Bouton(1)->Ispressed(screen)){
+            //on les enleve tous
             spirographes.clear();
         }
     }
     else if(current->get_id()==1)
     {
         if(inter_in(current,spirographes.back(),screen)){
+            //si on change de page on "rafraichit" les valeurs de base
             current=page1;
             page2->get_String(0)->set("5");
             page2->get_String(2)->set("400");

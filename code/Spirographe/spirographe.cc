@@ -1,12 +1,20 @@
 #include "Spirographe.hh"
 #include <cmath>
 
-Spirographe::Spirographe(): sommet(int(100/20)),Oc(Point(0, 0)),Ic(Point(80, 0)),Cr(Point(80, 0)), m_R(100), m_r(20), m_l(0), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, 100), m_innerCircle(&Ic, 20), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
+Spirographe::Spirographe(): sommet(int(100/20)),Oc(Point(400, 300)),Ic(Point(480, 300)),Cr(Point(480, 300)), m_R(100), m_r(20), m_l(0), m_time(0.0f), m_SpirographePoints(sf::PrimitiveType::LinesStrip), m_outerCircle(&Oc, 100), m_innerCircle(&Ic, 20), m_Crayon(&Cr, 2),m_color(sf::Color::Green)
 {       //last position du crayon initialisée à la position du crayon au temps 0
         m_lastCrayonPosition = genererCrayonPosition(m_time);
         //couleur du crayon
         m_Crayon.setFillColor(sf::Color::Red);
         initCrayon = 0;
+}
+
+Spirographe::Spirographe(Spirographe &p):sommet(p.sommet),Oc(p.Oc),Ic(p.Ic),Cr(p.Cr), m_R(p.m_R), m_r(p.m_r), m_l(p.m_l), m_time(p.m_time), m_SpirographePoints(p.m_SpirographePoints), m_outerCircle(p.m_outerCircle), m_innerCircle(p.m_innerCircle), m_Crayon(p.m_Crayon),m_color(p.m_color)
+{       //last position du crayon initialisée à la position du crayon au temps 0
+        m_lastCrayonPosition = genererCrayonPosition(m_time);
+        //couleur du crayon
+        m_Crayon.setFillColor(sf::Color::Red);
+        initCrayon = m_l;
 }
 
 //nb: mtime est le temps écoulé
