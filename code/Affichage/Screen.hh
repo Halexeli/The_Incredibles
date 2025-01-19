@@ -115,8 +115,6 @@ class Screen: public sf::RenderWindow {
   uint16_t h() const {return _h;}
   bool Buttonclicked(float x, float y, float w, float h);
   //permet de voir si un bouton est cliqué
- protected:
-
 
  private:
   sf::RenderWindow *  _win;
