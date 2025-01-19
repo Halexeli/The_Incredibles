@@ -6,7 +6,7 @@ https://docs.google.com/document/d/1v6DojOyck1JiW-xOi7uJPf6Dva5Fpj3pH-NnuBG6dqI/
 Idee de base :
 
 - simulation de spirographes modifiable par l'utilisateur 
-- peut dessiner des formes régulières: triangle, carré, polygone (5 sommets) selon le choix de l'utilisateur
+- peut dessiner des spirographes de formes régulières: triangle, carré, polygone (5 sommets) selon le choix de nombre de sommets par l'utilisateur 
 
 
 Packages requis: 
