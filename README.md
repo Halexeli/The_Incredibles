@@ -17,10 +17,12 @@ Configuration:
 Dans la simulation :
 
   Dans la premiere page :
+  
 - le bouton Nouvelle_Figure permet d'ajouter un spirographe
 - le bouton Clear enleve les spirographes
 
   Dans la deuxieme page :
+  
 - les boutons pour le nombre de sommets permet de faire varier le nombre de sommets de 3 a 5 du spirographe à modifier
 - les boutons (x+) et(x-) (resp. (y+) et (y-)) permet de déplacer le spirographe à modifier
 - les boutons pour la taille du crayon modifie le rapport entre la taille du crayon et le cercle interieur
