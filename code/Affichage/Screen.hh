@@ -16,7 +16,7 @@
 
 class Screen: public sf::RenderWindow {
  public:
-  Screen(uint16_t h, uint16_t w) : sf::RenderWindow(sf::VideoMode(h, w), "Incredible Spirographe"), _win(this){};
+  Screen(uint16_t w, uint16_t h) : sf::RenderWindow(sf::VideoMode(w, h), "Incredible Spirographe"), _win(this), _w(w) , _h(h),_wr(w),_hr(h){};
   ~Screen(){/*delete _win;*/};
   //bool isOpen(){return _win->isOpen();}
   //void close(){_win->close();}
@@ -111,6 +111,7 @@ class Screen: public sf::RenderWindow {
   void point(Point p,uint32_t color = 0x00000000);
   //affiche un point
 
+  void resized_screen(uint32_t wr,uint32_t hr);
   uint16_t w() const {return _w;}
   uint16_t h() const {return _h;}
   bool Buttonclicked(float x, float y, float w, float h);
@@ -119,7 +120,7 @@ class Screen: public sf::RenderWindow {
  private:
   sf::RenderWindow *  _win;
   uint16_t _w, _h;
-
+  uint32_t _wr, _hr;
   
   
 };

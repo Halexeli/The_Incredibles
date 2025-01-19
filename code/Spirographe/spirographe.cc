@@ -108,22 +108,21 @@ void Spirographe::aug_taille(float r){
 void Spirographe::setSommets(int sommets) {
     switch (sommets) {
         case 3: 
-            m_R = 100;
-            m_r = 33.3f; 
+            m_r = m_R/3; 
             m_l = 0.5f;
             break;
         case 4: // Square
-            m_R = 100; 
-            m_r = 25; 
+            m_r = m_R/4; 
             m_l = 0.7f; 
             break;
         case 5:
-            m_R = 100;
-            m_r = 20;
+            m_r = m_R/5;
             m_l = 0.5f;
             break;
         default:
             break;
     }
+    m_innerCircle.set_a(m_r);
+    m_Crayon.set_a(m_l);
     reset();
 }

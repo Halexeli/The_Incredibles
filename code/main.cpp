@@ -10,111 +10,46 @@
 
 
 int main() {
-    Screen screen(960, 540); 
     //Page d'accueil
-    Page *page1,*page2,*page3,*current;
-    std::vector<Spirographe*> spirographes;
-    sf::Clock clock;
-    float speed = 0.5f;
-    //spiro
+    Screen screen(960, 540); 
+    Page *page1,*page2,*current;
     page1=Page1();
     page2=Page2();
-    page3=Page3();
     current=page1;
+    //spirographes
+    std::vector<Spirographe*> spirographes;
+    sf::Clock clock;
+    float speed = 2.0f;
+    //fenetre
     while(screen.isOpen()){
         sf::Event event;
         while (screen.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
+                //fermer la fenetre
                 screen.close();
             }
+            if(event.type==sf::Event::Resized){
+                //pour que les boutons continuent de fonctionner
+                sf::Vector2u taille=screen.getSize();
+                screen.resized_screen(taille.x,taille.y);
+            }
         }
-        //inter(current,page1,page2,page3,spirographes,screen);
-        //printf("Test3\n");
-        
-        inter(current,page1,page2,page3,spirographes,screen,speed);
+        //pour les boutons
+        inter(current,page1,page2,spirographes,screen,speed);
+        //update les spirographes
         float deltaTime = clock.restart().asSeconds() * speed;
         for(auto it:spirographes){
-            //printf("Test4\n");
             it->update(deltaTime);
             it->draw(screen);
         }
-        //printf("Test5\n");
         current->draw(screen);
-        //printf("Test6\n");
         screen.render();
-        //printf("Test7\n");
     }
+    //delete les new
     for(auto it:spirographes){
             delete it;
         }
     del_page(page1);
     del_page(page2);
-    del_page(page3);
     return 0;
 }
-
-/*
-    printf("page1 : %d\n",page1->get_id());
-    printf("page2 : %d\n",page2->get_id());
-    printf("page3 : %d\n",page3->get_id());
-
-    //green pour bien commencer
-    sf::Color currentCol= sf::Color::Green;
-    //current size crayon
-
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
-
-    while (screen.isOpen()) {
-        sf::Event event;
-        while (screen.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                screen.close();
-            }
-        }
-        if (plusBouton->Ispressed(screen)) {
-            spirographe->setR(spirographe->getR() + 0.1);
-        }
-
-        if (moinsBouton->Ispressed(screen)) {
-            spirographe->setR(spirographe->getR() - 0.1);
-        }
-        if (resetSpeed->Ispressed(screen)) {
-            speed = 0.5f;
-        }
-        if (resetBouton->Ispressed(screen)) {
-            spirographe->reset();
-        }
-        if ((speed < 0.0f) || (stop->Ispressed(screen))) {
-            speed = 0.0f;
-        }
-        else{
-            if (speedPlus->Ispressed(screen)) {
-                speed += 0.001f; 
-            }
-            if ((speedMoins->Ispressed(screen))) {
-                speed -= 0.001f;
-            }
-        }
-        if (colorButton->Ispressed(screen)) {
-            currentCol = sf::Color(
-                std::rand() % 256, // Red
-                std::rand() % 256, // Green
-                std::rand() % 256  // Blue
-            );
-            spirographe->setColor(currentCol);
-        }
-        if (spirographe->getCrayonSize() < 0.0f) {
-            spirographe->setCrayonSize(0.0f);
-        }
-        if (crayonPlus->Ispressed(screen)) {
-            spirographe->setCrayonSize(spirographe->getCrayonSize() + 0.001);
-        }
-
-        if (crayonMoins->Ispressed(screen) && spirographe->getCrayonSize() > 0.0f) {
-            spirographe->setCrayonSize(spirographe->getCrayonSize() - 0.001);
-        }
-
-        
-    }
-*/

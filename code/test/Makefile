@@ -2,12 +2,12 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall
 #changez les includes selon votre machine
 #mac
-INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I../Figure -I../Spirographe -I../Affichage
-LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+#INCLUDES = -I/opt/homebrew/opt/sfml@2/include -I../Figure -I../Spirographe -I../Affichage
+#LDFLAGS = -L/opt/homebrew/opt/sfml@2/lib
+#LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 #linux
-#INCLUDES = -I/usr/include -I./Figure -I./Spirographe
-#LDFLAGS = -L/usr/lib
+INCLUDES = -I/usr/include -I./Figure -I./Spirographe
+LDFLAGS = -L/usr/lib
 #pour windows: 
 #changer path/to/sfml par le chemin d'installation de sfml sur ton ordinateur
 #INCLUDES = -IC:/path/to/sfml/include -I./Figure -I./Spirographe

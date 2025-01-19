@@ -6,7 +6,7 @@ bool Bouton::Ispressed(Screen &screen){
 }
 
 void Bouton::draw(Screen &screen) {
-    screen.rect(x, y, w, h, 0x1A1A77FF); //RGB
+    screen.rect(x, y, w, h, color); //RGB
     if (!label.empty()) {
         screen.draw(text);
     }
