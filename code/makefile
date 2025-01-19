@@ -17,6 +17,7 @@ SOURCES = main.cpp Make_page.cc Inter_page.cc ./Figure/*.cc ./Spirographe/*.cc .
 TARGET = spirograph
 
 #source files
+all: $(TARGET)
 $(TARGET): $(SOURCES)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LDFLAGS) $(SOURCES) -o $(TARGET) $(LIBS)
 clean:
